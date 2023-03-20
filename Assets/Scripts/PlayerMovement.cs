@@ -9,19 +9,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public static float speed = 8f;
+    public float speed;
     private Rigidbody2D playerRigidbody;
     //Sprite will be affected by gravity and can be controlled from the script by using forces.
     private Vector3 change;
     private Animator animator;
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         change = Vector3.zero;
