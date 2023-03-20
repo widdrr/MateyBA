@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed;
+    public static float speed = 8f;
     private Rigidbody2D playerRigidbody;
     //Sprite will be affected by gravity and can be controlled from the script by using forces.
     private Vector3 change;
@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
             animator.SetBool("moving", true);
+            playerRigidbody.AddRelativeForce(change);
         }
         else
         {
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     void MoveCharacter()
     {
         playerRigidbody.MovePosition(
-          transform.position + change * speed * Time.deltaTime
+          transform.position + change.normalized * speed * Time.deltaTime
             );
     }
 }
