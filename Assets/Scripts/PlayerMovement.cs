@@ -14,14 +14,11 @@ public class PlayerMovement : MonoBehaviour
     //Sprite will be affected by gravity and can be controlled from the script by using forces.
     private Vector3 change;
     private Animator animator;
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         change = Vector3.zero;
@@ -41,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
             animator.SetBool("moving", true);
+            playerRigidbody.AddRelativeForce(change);
         }
         else
         {
@@ -52,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     void MoveCharacter()
     {
         playerRigidbody.MovePosition(
-          transform.position + change * speed * Time.deltaTime
+          transform.position + change.normalized * speed * Time.deltaTime
             );
     }
 }
