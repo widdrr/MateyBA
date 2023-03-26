@@ -13,7 +13,6 @@ public enum PlayerState
     attacking
 }
 
-
 public class PlayerController : MonoBehaviour
 {
 
@@ -27,10 +26,13 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+
+        //We want the player to face the camera by default
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
     }
 
+    //This works better in Update than it does in FixedUpdate
     void Update()
     {
         if (Input.GetButtonDown("Attack") && currentState != PlayerState.attacking)
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(AttackSequence());
         }
     }
+
     void FixedUpdate()
     {
         change = Vector3.zero;
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
         if (change != Vector3.zero)
         {
             MoveCharacter();
+            
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
             animator.SetBool("moving", true);
@@ -70,6 +74,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //This coroutine gets called when attacking:
+    //we set our state to attacking and begin the attack animation
+    //we wait for 1 frame, then disable the animation flag (otherwise it would infinitely repeat the first frame)
+    //we then wait 0.4s before returning to idle
     IEnumerator AttackSequence()
     {
         currentState = PlayerState.attacking;
@@ -83,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //Moves the RigidBody according to the change vector
     void MoveCharacter()
     {
         playerRigidbody.MovePosition(
