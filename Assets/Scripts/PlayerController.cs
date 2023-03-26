@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        animator.SetFloat("moveX", 0);
+        animator.SetFloat("moveY", -1);
     }
 
     void Update()
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
         yield return null;
 
         animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
 
         currentState = PlayerState.idle;
 
