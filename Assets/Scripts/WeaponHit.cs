@@ -15,6 +15,5 @@ public class WeaponHit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        other.GetComponent<TestCollision>().Break();
     }
 }
