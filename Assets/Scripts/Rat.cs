@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Rat : GenericEnemy
 {
+    protected BoxCollider2D verticalCollider;
+    protected BoxCollider2D horizontalCollider;
 
     private bool changeTime = true;
+
+    protected new void Start()
+    {
+        base.Start();
+        verticalCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
+        horizontalCollider = transform.GetChild(1).GetComponent<BoxCollider2D>();
+    }
 
     //Rats only move and deal contact damage, no active attacking
     protected override bool ConditionIsSatisfied() 
@@ -36,13 +46,27 @@ public class Rat : GenericEnemy
                 currentState = EnemyState.idle;
             }
 
-            //Perform the next state-movementDirection after 3 seconds
+            //Perform the next movementDirection change after 3 seconds
             changeTime = false;
             StartCoroutine(SetTimer(3));
         }
 
+        if(currentState == EnemyState.moving) 
+        {
+            if (MovementIsHorizontal(movementDirection))
+            {
+                verticalCollider.enabled = false;
+                horizontalCollider.enabled = true;
+            }
+            else
+            {
+                verticalCollider.enabled = true;
+                horizontalCollider.enabled = false;
+            }
+        }
+
         enemyRigidbody.MovePosition(
-          transform.position + movementDirection * speed * Time.deltaTime
+          transform.position + speed * Time.deltaTime * movementDirection
             );
     }
 
@@ -52,5 +76,12 @@ public class Rat : GenericEnemy
     {
         yield return new WaitForSeconds(seconds);
         changeTime = true;
+    }
+
+    protected bool MovementIsHorizontal(Vector3 direction)
+    {
+        return Mathf.Abs(Vector3.Dot(direction, Vector3.right)) 
+                >= 
+               Mathf.Abs(Vector3.Dot(direction, Vector3.up)); 
     }
 }
