@@ -6,10 +6,16 @@ using TMPro;
 public class CoinTextManager : MonoBehaviour
 {
     //Implementation of inventory is needed to build and test properly this coin text updater.
-    public TMP_Text coinHUD;
+    private TextMeshProUGUI coinCounter;
+    public static int coinNumber;
+
+    public void Start()
+    {
+        coinCounter = GameObject.Find("CoinCounter").GetComponent<TextMeshProUGUI>();
+    }
 
     public void Update()
     {
-        coinHUD.text = "00" + 5;
+        coinCounter.text = coinNumber.ToString("000");
     }
 }
