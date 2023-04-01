@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    public Image[] piles;
+    public Image[] pills;
     public Sprite fullPile;
     public Sprite halfPile;
     public Sprite emptyPile;
@@ -22,8 +22,8 @@ public class HealthManager : MonoBehaviour
     {
         for(int i = 0; i < pileContainers; i++)
         {
-            piles[i].gameObject.SetActive(true);
-            piles[i].sprite = fullPile;
+            pills[i].gameObject.SetActive(true);
+            pills[i].sprite = fullPile;
         }
     }
 
@@ -40,15 +40,15 @@ public class HealthManager : MonoBehaviour
         {
             if( i < auxHealth)
             {
-                piles[i/2].sprite = fullPile;
+                pills[i/2].sprite = fullPile;
             }
             else if(i > auxHealth)
             {
-                piles[i/2].sprite = emptyPile;
+                pills[i/2].sprite = emptyPile;
             }
             else
             {
-                piles[i/2].sprite = halfPile;
+                pills[i/2].sprite = halfPile;
             }
         }
     }
