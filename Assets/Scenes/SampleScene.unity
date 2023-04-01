@@ -184,10 +184,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 3
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -205,11 +205,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea89fc4b9a29fe469c090277c774218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piles: []
+  piles:
+  - {fileID: 56308751}
+  - {fileID: 1738012241}
+  - {fileID: 423641815}
+  - {fileID: 1575729022}
+  - {fileID: 379471560}
+  - {fileID: 433909438}
   fullPile: {fileID: 167178526, guid: deedc762d8def8645a9615b8ce883774, type: 3}
   halfPile: {fileID: 1656513546, guid: deedc762d8def8645a9615b8ce883774, type: 3}
   emptyPile: {fileID: -1992231006, guid: deedc762d8def8645a9615b8ce883774, type: 3}
-  pileContainers: 2
+  pileContainers: 3
+  currentPlayerHealth: 3
 --- !u!1 &56308749
 GameObject:
   m_ObjectHideFlags: 0
