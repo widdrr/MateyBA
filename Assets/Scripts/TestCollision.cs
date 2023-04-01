@@ -22,6 +22,12 @@ public class TestCollision : MonoBehaviour
         if(me.color == Color.white)
         {
             me.color = Color.red;
+
+            //I have a 50% chance to increment my coinNumber to a maximum of 999 when I break an enemy
+            if (Random.Range(0, 2) == 1 && CoinTextManager.coinNumber <= 999)
+            {
+                CoinTextManager.coinNumber++;
+            }
         }
         else
         {
