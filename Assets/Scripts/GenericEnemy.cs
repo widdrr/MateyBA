@@ -82,4 +82,11 @@ public abstract class GenericEnemy : MonoBehaviour
     //such as moving randomly, chasing the player, staying still, etc
     protected abstract void IdleBehaviour();
 
+    /*protected virtual void Die();
+
+    protected virtual void TakeDamage(int damage)
+    {
+
+    }*/
+
 }
