@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     public Image[] pills;
-    public Sprite fullPile;
-    public Sprite halfPile;
-    public Sprite emptyPile;
-    public int pileContainers;
+    public Sprite fullPill;
+    public Sprite halfPill;
+    public Sprite emptyPill;
+    public int pillContainers;
     public int currentPlayerHealth;
 
     void Start()
@@ -20,10 +20,10 @@ public class HealthManager : MonoBehaviour
     //Set active a specific number of pile objects
     public void InitHealth()
     {
-        for(int i = 0; i < pileContainers; i++)
+        for(int i = 0; i < pillContainers; i++)
         {
             pills[i].gameObject.SetActive(true);
-            pills[i].sprite = fullPile;
+            pills[i].sprite = fullPill;
         }
     }
 
@@ -32,23 +32,23 @@ public class HealthManager : MonoBehaviour
         UpdateHealth();
     }
 
-    //Update displayed sprite for piles by a specific number which should represent player's current health
+    //Update displayed sprite for pills by a specific number which should represent player's current health
     public void UpdateHealth()
     {
         int auxHealth = currentPlayerHealth;
-        for(int i = 0; i < pileContainers*2; i++)
+        for(int i = 0; i < pillContainers*2; i++)
         {
             if( i < auxHealth)
             {
-                pills[i/2].sprite = fullPile;
+                pills[i/2].sprite = fullPill;
             }
             else if(i > auxHealth)
             {
-                pills[i/2].sprite = emptyPile;
+                pills[i/2].sprite = emptyPill;
             }
             else
             {
-                pills[i/2].sprite = halfPile;
+                pills[i/2].sprite = halfPill;
             }
         }
     }
