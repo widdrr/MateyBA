@@ -35,12 +35,12 @@ public class Rat : GenericEnemy
         {
             //If we're currently idle, pick a random direction and begin moving
             if (currentState == EnemyState.idle)
-            {    
+            {
                 movementDirection = (new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0)).normalized;
                 currentState = EnemyState.moving;
             }
             //If we're currently moving, stop
-            else
+            else if (currentState == EnemyState.moving)
             {
                 movementDirection = Vector3.zero;
                 currentState = EnemyState.idle;
@@ -51,7 +51,7 @@ public class Rat : GenericEnemy
             StartCoroutine(SetTimer(3));
         }
 
-        if(currentState == EnemyState.moving) 
+        if (currentState == EnemyState.moving)
         {
             if (MovementIsHorizontal(movementDirection))
             {
@@ -65,9 +65,9 @@ public class Rat : GenericEnemy
             }
         }
 
-        enemyRigidbody.MovePosition(
-          transform.position + speed * Time.deltaTime * movementDirection
-            );
+        if(currentState != EnemyState.staggered)
+            enemyRigidbody.MovePosition(
+                transform.position + speed * Time.deltaTime * movementDirection);
     }
 
     //this coroutine sets changeTime to true after waiting the given seconds

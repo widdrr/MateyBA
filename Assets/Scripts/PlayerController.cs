@@ -10,22 +10,26 @@ public enum PlayerState
 {
     idle,
     moving,
-    attacking
+    attacking,
+    staggered,
 }
 
 public class PlayerController : MonoBehaviour
 {
 
     public float speed;
+    public float knockbackAmount;
 
     private PlayerState currentState;
     private Rigidbody2D playerRigidbody;
     private Vector3 change;
     private Animator animator;
+    private HealthManager healthManager;
     void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        healthManager = GameObject.Find("HealthContainers").GetComponent<HealthManager>();
 
         //We want the player to face the camera by default
         animator.SetFloat("moveX", 0);
@@ -85,11 +89,33 @@ public class PlayerController : MonoBehaviour
         yield return null;
 
         animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
 
         currentState = PlayerState.idle;
 
     }
+
+    public virtual void TakeDamage(Vector3 hitDirection, int damage = 0)
+    {
+        healthManager.SubtractHealth(damage);
+
+        currentState = PlayerState.staggered;
+
+        change = Vector3.zero;
+        Vector2 knockbackDireciton = transform.position - hitDirection;
+        playerRigidbody.AddForce(knockbackDireciton.normalized * knockbackAmount, ForceMode2D.Impulse);
+
+        StartCoroutine(StopKnockback(0.3f));
+    }
+
+    protected IEnumerator StopKnockback(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        playerRigidbody.velocity = Vector3.zero;
+        currentState = PlayerState.idle;
+    }
+
 
     //Moves the RigidBody according to the change vector
     void MoveCharacter()
