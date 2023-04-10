@@ -48,7 +48,7 @@ public class Rat : GenericEnemy
 
             //Perform the next movementDirection change after 3 seconds
             changeTime = false;
-            StartCoroutine(SetTimer(3));
+            StartCoroutine(SetTimer(Random.Range(1.5f,3.5f)));
         }
 
         if (currentState == EnemyState.moving)
@@ -72,7 +72,7 @@ public class Rat : GenericEnemy
 
     //this coroutine sets changeTime to true after waiting the given seconds
     //by calling this asynchronously I can delay setting the flag.
-    protected IEnumerator SetTimer(int seconds)
+    protected IEnumerator SetTimer(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         changeTime = true;

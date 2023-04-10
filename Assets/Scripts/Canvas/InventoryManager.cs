@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     public bool isPaused;
     public GameObject inventoryPanel;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,10 @@ public class InventoryManager : MonoBehaviour
             isPaused = !isPaused;
             if(isPaused)
             {
-                inventoryPanel.gameObject.SetActive(true);
+                inventoryPanel.SetActive(true);
+                player.SetActive(false);
                 Time.timeScale = 0f;
+
             }
             else
             {
@@ -30,4 +33,13 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    public void Resume()
+    {
+        isPaused = false;
+        inventoryPanel.SetActive(false);
+        Time.timeScale = 1f;
+        player.SetActive(true);
+    }
 }
+
