@@ -52,4 +52,9 @@ public class HealthManager : MonoBehaviour
             }
         }
     }
+
+    public void SubtractHealth(int damage)
+    {
+        currentPlayerHealth -= damage;
+    }
 }
