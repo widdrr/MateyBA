@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Transform target;
-    public float smoothing = 0.6F;
+    public float smoothing = 0.1F;
     public Vector2 maxPosition;
     public Vector2 minPosition;
     //Two Vector2 for the maximum area/ minimum area that the camera can go to.
