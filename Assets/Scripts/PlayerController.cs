@@ -65,7 +65,8 @@ public class PlayerController : MonoBehaviour
         if (change != Vector3.zero)
         {
             MoveCharacter();
-            
+            change.x = Mathf.Round(change.x);
+            change.y = Mathf.Round(change.y);
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
             animator.SetBool("moving", true);
