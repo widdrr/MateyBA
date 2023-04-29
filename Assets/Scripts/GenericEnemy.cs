@@ -114,7 +114,7 @@ public abstract class GenericEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerController target = other.gameObject.GetComponent<PlayerController>();
+            PlayerHealth target = other.gameObject.GetComponent<PlayerHealth>();
             target.TakeDamage(transform.position, attackDamage);
         }
     }
