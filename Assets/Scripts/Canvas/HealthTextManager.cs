@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthManager : MonoBehaviour
+public class HealthTextManager : MonoBehaviour
 {
     public Image[] pills;
     public Sprite fullPill;

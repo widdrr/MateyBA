@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum EnemyState
 {
@@ -114,8 +115,10 @@ public abstract class GenericEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHealth target = other.gameObject.GetComponent<PlayerHealth>();
-            target.TakeDamage(transform.position, attackDamage);
+            GameObject target = other.gameObject;
+            OnHitPayload payload = new(attackDamage, enemyRigidbody.position);
+
+            ExecuteEvents.Execute<IOnHitSubscriber>(target, null, (x,y) => x.OnHit(payload));
         }
     }
 
