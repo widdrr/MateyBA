@@ -13,13 +13,9 @@ public enum EnemyState
 }
 
 
-public abstract class GenericEnemy : MonoBehaviour
+public abstract class GenericEnemyController : MonoBehaviour
 {
     public float speed;
-    public int hitPoints;
-    public int attackDamage;
-    public int dropAmount;
-    public int knockbackAmount;
     public string enemyName;
     public EnemyState currentState;
 
@@ -88,53 +84,4 @@ public abstract class GenericEnemy : MonoBehaviour
     //such as moving randomly, chasing the player, staying still, etc
     protected abstract void IdleBehaviour();
 
-    protected virtual void DeathSequence()
-    {
-        this.currentState = EnemyState.dying;
-    }
-
-    public virtual void TakeDamage(Vector3 hitDirection, int damage = 0)
-    {
-        hitPoints -= damage;
-        
-        currentState = EnemyState.staggered;
-        
-        movementDirection = Vector3.zero;
-        enemyRigidbody.isKinematic = false;
-        Vector2 knockbackDireciton = transform.position - hitDirection;
-        enemyRigidbody.AddForce(knockbackDireciton.normalized * knockbackAmount, ForceMode2D.Impulse);
-
-        StartCoroutine(StopKnockback(0.3f));
-
-        if(hitPoints <=0)
-        {
-            DeathSequence();
-        }
-    }
-    protected virtual void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            GameObject target = other.gameObject;
-            OnHitPayload payload = new(attackDamage, enemyRigidbody.position);
-
-            ExecuteEvents.Execute<IOnHitSubscriber>(target, null, (x,y) => x.OnHit(payload));
-        }
-    }
-
-    protected IEnumerator StopKnockback(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-
-        enemyRigidbody.velocity = Vector3.zero;
-        enemyRigidbody.isKinematic = true;
-        currentState = EnemyState.idle;
-    }
-
-    //band-aid solution until I think of something better
-    protected IEnumerator Die(int seconds)
-    {
-        yield return null;
-        
-    }
 }

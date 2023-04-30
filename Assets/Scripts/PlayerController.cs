@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     public void OnHit(OnHitPayload payload)
     {
-        StartCoroutine(Stagger(0.3f));
+        StartCoroutine(Stagger(0.32f));
     }
 
     protected IEnumerator Stagger(float seconds)

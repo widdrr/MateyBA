@@ -1,32 +1,27 @@
+using System;
+using System.Collections;
 using UnityEngine;
 public class HealthManager : MonoBehaviour, IOnHitSubscriber
 {
-    public int maxHealth = 100;
-
-    private int currentHealth;
+    public int maxHealth = 10;
+    public int CurrentHealth { get; private set; }
 
     private void Start()
     {
-        currentHealth = maxHealth;
-    }
-
-    public void SubtractHealth(int damage)
-    {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        // Perform death logic
-        Debug.Log("Player died");
+        CurrentHealth = maxHealth;
     }
 
     public void OnHit(OnHitPayload payload)
     {
-        SubtractHealth(payload.damage);
+        CurrentHealth -= payload.damage;
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        // Perform death logic
+        Debug.Log("Player died");
     }
 }

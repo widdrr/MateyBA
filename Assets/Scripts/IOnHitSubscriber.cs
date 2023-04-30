@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 
 public interface IOnHitSubscriber : IEventSystemHandler
-{
+{    
     void OnHit(OnHitPayload payload);
 }
 

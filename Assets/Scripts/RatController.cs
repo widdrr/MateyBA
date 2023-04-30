@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Rat : GenericEnemy
+public class RatController : GenericEnemyController, IOnHitSubscriber
 {
     protected BoxCollider2D verticalCollider;
     protected BoxCollider2D horizontalCollider;
@@ -83,5 +83,18 @@ public class Rat : GenericEnemy
         return Mathf.Abs(Vector3.Dot(direction, Vector3.right)) 
                 >= 
                Mathf.Abs(Vector3.Dot(direction, Vector3.up)); 
+    }
+
+    public void OnHit(OnHitPayload payload)
+    {
+        movementDirection = Vector3.zero;
+        StartCoroutine(Stagger(0.32f));
+    }
+
+    protected IEnumerator Stagger(float seconds)
+    {
+        currentState = EnemyState.staggered;
+        yield return new WaitForSeconds(seconds);
+        currentState = EnemyState.idle;
     }
 }

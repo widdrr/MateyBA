@@ -5,25 +5,25 @@ public class KnockbackManager : MonoBehaviour, IOnHitSubscriber
 {
     public float knockbackAmount;
 
-    private Rigidbody2D playerRigidbody;
+    private Rigidbody2D entityRigidbody;
 
     private void Start()
     {
-        playerRigidbody = GetComponent<Rigidbody2D>();
+        entityRigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void OnHit(OnHitPayload payload)
     {
         Vector3 hitDirection = transform.position - payload.position;
         Vector2 knockbackDireciton = hitDirection.normalized;
-        playerRigidbody.AddForce(knockbackDireciton * knockbackAmount, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(knockbackDireciton * knockbackAmount, ForceMode2D.Impulse);
 
-        StartCoroutine(StopKnockback(0.3f));
+        StartCoroutine(StopKnockback(0.32f));
     }
 
     private IEnumerator StopKnockback(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        playerRigidbody.velocity = Vector3.zero;
+        entityRigidbody.velocity = Vector3.zero;
     }
 }
