@@ -84,4 +84,9 @@ public abstract class GenericEnemyController : MonoBehaviour
     //such as moving randomly, chasing the player, staying still, etc
     protected abstract void IdleBehaviour();
 
+    public virtual void DeathSequence()
+    {
+        currentState = EnemyState.dying;
+    }
+
 }

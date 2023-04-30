@@ -101,4 +101,9 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         yield return new WaitForSeconds(seconds);
         currentState = PlayerState.idle;
     }
+
+    public void DeathSequence()
+    {
+        Debug.Log("Player died lmao");
+    }
 }

@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class HealthManager : MonoBehaviour, IOnHitSubscriber
 {
     public int maxHealth = 10;
     public int CurrentHealth { get; private set; }
+
+    public UnityEvent deathSequence;
 
     private void Start()
     {
@@ -16,12 +20,7 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
         CurrentHealth -= payload.damage;
         if (CurrentHealth <= 0)
         {
-            Die();
+            deathSequence.Invoke();
         }
-    }
-    private void Die()
-    {
-        // Perform death logic
-        Debug.Log("Player died");
     }
 }
