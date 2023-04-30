@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthManager : MonoBehaviour
+public class HealthTextManager : MonoBehaviour
 {
     public Image[] pills;
     public Sprite fullPill;
     public Sprite halfPill;
     public Sprite emptyPill;
     public int pillContainers;
-    public int currentPlayerHealth;
+    public HealthManager playerHealth;
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class HealthManager : MonoBehaviour
     //Update displayed sprite for pills by a specific number which should represent player's current health
     public void UpdateHealth()
     {
-        int auxHealth = currentPlayerHealth;
+        int auxHealth = playerHealth.CurrentHealth;
         for(int i = 0; i < pillContainers*2; i++)
         {
             if( i < auxHealth)
@@ -51,10 +51,5 @@ public class HealthManager : MonoBehaviour
                 pills[i/2].sprite = halfPill;
             }
         }
-    }
-
-    public void SubtractHealth(int damage)
-    {
-        currentPlayerHealth -= damage;
     }
 }
