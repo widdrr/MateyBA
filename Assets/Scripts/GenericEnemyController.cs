@@ -89,4 +89,18 @@ public abstract class GenericEnemyController : MonoBehaviour
         currentState = EnemyState.dying;
     }
 
+
+    public virtual void OnHit(OnHitPayload payload)
+    {
+        movementDirection = Vector3.zero;
+        StartCoroutine(Stagger(0.32f));
+    }
+
+    protected IEnumerator Stagger(float seconds)
+    {
+        currentState = EnemyState.staggered;
+        yield return new WaitForSeconds(seconds);
+        currentState = EnemyState.idle;
+    }
+
 }
