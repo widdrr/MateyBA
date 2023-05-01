@@ -24,6 +24,7 @@ public class Death : StateMachineBehaviour
         animator.gameObject.SetActive(false);
     }
 
+    //Add potions and coins to the inventory with a predetermined chance
     private void GenerateLoot()
     {
         int auxChance = Random.Range(1, 11);
