@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8f76001420e7f41abf5ac37d9c88a3, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  coins: 0
-  potions: 9
+  coins: 8
+  potions: 4
