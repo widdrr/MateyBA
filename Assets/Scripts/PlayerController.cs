@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     private Animator animator;
     private PlayerState currentState;
     private Rigidbody2D playerRigidbody;
+    public Inventory inventory;
 
     private void Start()
     {
@@ -30,9 +31,13 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     private void Update()
     {
-        if (Input.GetButtonDown("Attack") && currentState != PlayerState.attacking)
+        if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking)
         {
-            StartCoroutine(AttackSequence());
+            StartCoroutine(LeftAttackSequence());
+        }
+        else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking)
+        {
+            StartCoroutine(RightAttackSequence());
         }
     }
 
@@ -71,15 +76,24 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         }
     }
 
-    private IEnumerator AttackSequence()
+    private IEnumerator LeftAttackSequence()
     {
         currentState = PlayerState.attacking;
         animator.SetBool("attacking", true);
         yield return null;
 
         animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(0.32f);
+        yield return new WaitForSeconds(inventory.GetLeftWeapon().waitingTime);
+        currentState = PlayerState.idle;
+    }
+    private IEnumerator RightAttackSequence()
+    {
+        currentState = PlayerState.attacking;
+        animator.SetBool("attacking", true);
+        yield return null;
 
+        animator.SetBool("attacking", false);
+        yield return new WaitForSeconds(inventory.GetRightWeapon().waitingTime);
         currentState = PlayerState.idle;
     }
 

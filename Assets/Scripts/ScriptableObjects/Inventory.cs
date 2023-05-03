@@ -9,7 +9,7 @@ public class Inventory : ScriptableObject
     public int coins;
     [Range(0,9)]
     public int potions;
-
+    public Weapon leftWeapon, rightWeapon;
     //Limit the number of coins
     public void CheckCoins()
     {
@@ -19,5 +19,13 @@ public class Inventory : ScriptableObject
     public void CheckPotions()
     {
         potions = Mathf.Clamp(potions, 0, 9);
+    }
+    public Weapon GetLeftWeapon()
+    {
+        return leftWeapon;
+    }
+    public Weapon GetRightWeapon() 
+    { 
+        return rightWeapon;
     }
 }
