@@ -38,22 +38,22 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2190902229892881438}
-    m_Position: {x: 30, y: 230, z: 0}
+    m_Position: {x: 200, y: 450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8673215447747086893}
-    m_Position: {x: 30, y: 320, z: 0}
+    m_Position: {x: -20, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4886064985028639655}
-    m_Position: {x: 330, y: 230, z: 0}
+    m_Position: {x: 460, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -1201544190266516496}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 350, y: 120, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 640, y: 130, z: 0}
+  m_AnyStatePosition: {x: 240, y: 100, z: 0}
+  m_EntryPosition: {x: -80, y: 320, z: 0}
+  m_ExitPosition: {x: -70, y: 150, z: 0}
   m_ParentStateMachinePosition: {x: 620, y: -70, z: 0}
   m_DefaultState: {fileID: -2190902229892881438}
 --- !u!206 &-2517202039701622013
@@ -139,7 +139,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attacking
+    m_ConditionEvent: crowbarattacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4886064985028639655}
@@ -169,31 +169,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: moveX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: moveY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: moving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attacking
+    m_Controller: {fileID: 0}
+  - m_Name: crowbarattacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -412,7 +412,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attacking
+  m_Name: CrowbarAttacking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

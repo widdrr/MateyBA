@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     private void Update()
     {
-        if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking)
+        if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking && inventory.leftWeapon)
         {
             StartCoroutine(LeftAttackSequence());
         }
-        else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking)
+        else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking && inventory.rightWeapon)
         {
             StartCoroutine(RightAttackSequence());
         }
@@ -79,21 +79,21 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     private IEnumerator LeftAttackSequence()
     {
         currentState = PlayerState.attacking;
-        animator.SetBool("attacking", true);
+        animator.SetBool(inventory.leftWeapon.type + "attacking", true);
         yield return null;
 
-        animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(inventory.GetLeftWeapon().waitingTime);
+        animator.SetBool(inventory.leftWeapon.type + "attacking", false);
+        yield return new WaitForSeconds(inventory.leftWeapon.waitingTime);
         currentState = PlayerState.idle;
     }
     private IEnumerator RightAttackSequence()
     {
         currentState = PlayerState.attacking;
-        animator.SetBool("attacking", true);
+        animator.SetBool(inventory.rightWeapon.type + "attacking", true);
         yield return null;
 
-        animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(inventory.GetRightWeapon().waitingTime);
+        animator.SetBool(inventory.rightWeapon.type + "attacking", false);
+        yield return new WaitForSeconds(inventory.rightWeapon.waitingTime);
         currentState = PlayerState.idle;
     }
 
