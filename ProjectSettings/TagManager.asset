@@ -13,9 +13,9 @@ TagManager:
   - TestLayer
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Camera
+  - Tilemap
+  - Player
   - 
   - 
   - 

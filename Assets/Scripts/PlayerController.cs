@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     private PlayerState currentState;
     private Rigidbody2D playerRigidbody;
 
+    public Inventory inventory;
+    public ProjectileBehaviour projectilePrefab;
+    public Transform launchOffSet;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -30,9 +34,13 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     private void Update()
     {
-        if (Input.GetButtonDown("Attack") && currentState != PlayerState.attacking)
+        if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking && inventory.leftWeapon)
         {
-            StartCoroutine(AttackSequence());
+            StartCoroutine(LeftAttackSequence());
+        }
+        else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking && inventory.rightWeapon)
+        {
+            StartCoroutine(RightAttackSequence());
         }
     }
 
@@ -71,18 +79,36 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         }
     }
 
-    private IEnumerator AttackSequence()
+    private IEnumerator LeftAttackSequence()
     {
         currentState = PlayerState.attacking;
-        animator.SetBool("attacking", true);
+        animator.SetBool(inventory.leftWeapon.type + "attacking", true);
         yield return null;
 
-        animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(0.32f);
+        animator.SetBool(inventory.leftWeapon.type + "attacking", false);
+        yield return new WaitForSeconds(inventory.leftWeapon.waitingTime);
+        currentState = PlayerState.idle;
+    }
+    private IEnumerator RightAttackSequence()
+    {
+        currentState = PlayerState.attacking;
+        animator.SetBool(inventory.rightWeapon.type + "attacking", true);
+        yield return null;
 
+        animator.SetBool(inventory.rightWeapon.type + "attacking", false);
+        yield return new WaitForSeconds(inventory.rightWeapon.waitingTime);
         currentState = PlayerState.idle;
     }
 
+    //Instantiate a new projectile 
+    public void Shoot()
+    {
+        float moveX = animator.GetFloat("moveX");
+        float moveY = animator.GetFloat("moveY");
+        Vector2 shootDirection = moveX != 0 ? new Vector2(moveX, 0) : new Vector2(0, moveY);
+        ProjectileBehaviour newBullet = Instantiate(projectilePrefab, launchOffSet.position, Quaternion.identity);
+        newBullet.transform.right = shootDirection;
+    }
     private void MoveCharacter(Vector3 change)
     {
         playerRigidbody.MovePosition(

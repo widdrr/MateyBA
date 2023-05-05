@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8f76001420e7f41abf5ac37d9c88a3, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: fb7f3829992d57c4ba6cfe926f8b1933, type: 3}
+  m_Name: Glock
   m_EditorClassIdentifier: 
-  coins: 2
-  potions: 2
-  leftWeapon: {fileID: 11400000, guid: 2cfc86abda4781740a6758c655e10b0c, type: 2}
-  rightWeapon: {fileID: 0}
+  weaponName: Glock I
+  weaponSprite: {fileID: -870563758, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
+  type: 0
+  size: 0
+  damage: 1
+  waitingTime: 0.7

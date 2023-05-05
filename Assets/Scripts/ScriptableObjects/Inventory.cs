@@ -9,7 +9,8 @@ public class Inventory : ScriptableObject
     public int coins;
     [Range(0,9)]
     public int potions;
-
+#nullable enable
+    public Weapon? leftWeapon, rightWeapon;
     //Limit the number of coins
     public void CheckCoins()
     {

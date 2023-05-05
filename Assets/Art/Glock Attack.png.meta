@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0
+guid: 563b61b04d089c645b416661d4b057de
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HUD Elements_0
+      name: Glock Attack_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 215
-        width: 21
-        height: 21
+        x: 0
+        y: 1500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bf50b56bdf1c2f41b9e4e8b7e989e59
-      internalID: 983791598
+      spriteID: 2168329ceef1fed498c60602c2045ce7
+      internalID: -2138591947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_1
+      name: Glock Attack_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 215
-        width: 21
-        height: 21
+        x: 500
+        y: 1500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b559bcb741d24254fa0945342e462728
-      internalID: -1770736446
+      spriteID: 031b68c4df3f44644939b2f691660594
+      internalID: -369786496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_2
+      name: Glock Attack_2
       rect:
         serializedVersion: 2
-        x: 114
-        y: 215
-        width: 21
-        height: 21
+        x: 1000
+        y: 1500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6033083b5b2f2414f96077bf179230a9
-      internalID: -946297775
+      spriteID: d233d20bddf39a34f8c0b6c38854a3a6
+      internalID: 1893415943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_3
+      name: Glock Attack_3
       rect:
         serializedVersion: 2
-        x: 14
-        y: 165
-        width: 21
-        height: 21
+        x: 1500
+        y: 1500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64002e29a31424045b01a6d2a67643eb
-      internalID: 560822199
+      spriteID: 123e186fa711d794eabd2f8a628e28b9
+      internalID: -2099484377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_4
+      name: Glock Attack_4
       rect:
         serializedVersion: 2
-        x: 50
-        y: 171
-        width: 50
-        height: 8
+        x: 0
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 852c8f41a4e0468469f9bc38f3cb8e47
-      internalID: -1544538797
+      spriteID: cb02a35771257854f808ee21c36ada2e
+      internalID: 2024476076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_5
+      name: Glock Attack_5
       rect:
         serializedVersion: 2
-        x: 116
-        y: 169
-        width: 17
-        height: 12
+        x: 500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26d3ac3da8ae03c4ba98b8d85db384ca
-      internalID: 703585290
+      spriteID: 7ef2d7fccae5a4b4bae772f57b3dbc6e
+      internalID: 1383654967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_6
+      name: Glock Attack_6
       rect:
         serializedVersion: 2
-        x: 16
-        y: 119
-        width: 17
-        height: 12
+        x: 1000
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62068dc38ae267449b2c52f8b92abbb8
-      internalID: 1330470352
+      spriteID: d62f6b33614122049a3003543441e2e8
+      internalID: -1537115087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_7
+      name: Glock Attack_7
       rect:
         serializedVersion: 2
-        x: 63
-        y: 114
-        width: 23
-        height: 22
+        x: 1500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +278,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa08e43de650af2429f2af720713ac31
-      internalID: -681814778
+      spriteID: 21fba8431adbf4e409971472da07dee9
+      internalID: -880766082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_8
+      name: Glock Attack_8
       rect:
         serializedVersion: 2
-        x: 116
-        y: 116
-        width: 17
-        height: 17
+        x: 0
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f0a234cc452ec8459dc203aa0411fdb
-      internalID: 1948947599
+      spriteID: 56a80487fe58f8e459292adc842fecad
+      internalID: 1809180879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_9
+      name: Glock Attack_9
       rect:
         serializedVersion: 2
-        x: 19
-        y: 67
-        width: 12
-        height: 17
+        x: 500
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,20 +320,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af4e1f65c5bc9224ca08199a694e3870
-      internalID: 1321467364
+      spriteID: 602f97f5cddfa674ca5935050430e88d
+      internalID: -1307050162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_10
+      name: Glock Attack_10
       rect:
         serializedVersion: 2
-        x: 68
-        y: 64
-        width: 13
-        height: 22
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,20 +341,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 448eea102c40af949bd29c2d493c5a4b
-      internalID: 661732559
+      spriteID: 8b314d5c5b4c3ac47a04262529003af2
+      internalID: -1916077372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_11
+      name: Glock Attack_11
       rect:
         serializedVersion: 2
-        x: 101
-        y: 71
-        width: 42
-        height: 12
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,20 +362,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06cbedd099ff18441ab765489a47473a
-      internalID: -931495011
+      spriteID: 60e65e7bcc56b3f449adc6632ca64562
+      internalID: 900049012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD Elements_12
+      name: Glock Attack_12
       rect:
         serializedVersion: 2
-        x: 17
-        y: 19
-        width: 15
-        height: 12
+        x: 0
+        y: 0
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,8 +383,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae2270aa653df7047a6fff1657fc2826
-      internalID: -870563758
+      spriteID: 94279627741eae541b7adbae6d8a2538
+      internalID: -945358999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glock Attack_13
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa154ece35f35c24b96cc641540d2c7c
+      internalID: -891611350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glock Attack_14
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc76fd8c0d0e1cc499ff273435cd3cf2
+      internalID: 1806192914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glock Attack_15
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b84a74eb56ca8e44b4ab1bab8996971
+      internalID: -992764646
       vertices: []
       indices: 
       edges: []
@@ -400,19 +463,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HUD Elements_0: 983791598
-      HUD Elements_1: -1770736446
-      HUD Elements_10: 661732559
-      HUD Elements_11: -931495011
-      HUD Elements_12: -870563758
-      HUD Elements_2: -946297775
-      HUD Elements_3: 560822199
-      HUD Elements_4: -1544538797
-      HUD Elements_5: 703585290
-      HUD Elements_6: 1330470352
-      HUD Elements_7: -681814778
-      HUD Elements_8: 1948947599
-      HUD Elements_9: 1321467364
+      Glock Attack_0: -2138591947
+      Glock Attack_1: -369786496
+      Glock Attack_10: -1916077372
+      Glock Attack_11: 900049012
+      Glock Attack_12: -945358999
+      Glock Attack_13: -891611350
+      Glock Attack_14: 1806192914
+      Glock Attack_15: -992764646
+      Glock Attack_2: 1893415943
+      Glock Attack_3: -2099484377
+      Glock Attack_4: 2024476076
+      Glock Attack_5: 1383654967
+      Glock Attack_6: -1537115087
+      Glock Attack_7: -880766082
+      Glock Attack_8: 1809180879
+      Glock Attack_9: -1307050162
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
