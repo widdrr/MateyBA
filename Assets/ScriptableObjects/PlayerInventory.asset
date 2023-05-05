@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8f76001420e7f41abf5ac37d9c88a3, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  coins: 0
+  coins: 2
   potions: 2
-  leftWeapon: {fileID: 0}
-  rightWeapon: {fileID: 11400000, guid: 2cfc86abda4781740a6758c655e10b0c, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 2cfc86abda4781740a6758c655e10b0c, type: 2}
+  rightWeapon: {fileID: 0}

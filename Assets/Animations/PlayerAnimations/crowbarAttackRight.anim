@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: attackUp
+  m_Name: crowbarAttackRight
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.35
+        time: 0.35000002
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -42,21 +42,21 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Crowbar/CrowbarUp
+    path: Crowbar/CrowbarRight
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1126933280, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+      value: {fileID: 1021176958, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
     - time: 0.083333336
-      value: {fileID: 1978793084, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+      value: {fileID: -882931503, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
     - time: 0.16666667
-      value: {fileID: -822055849, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+      value: {fileID: 472733564, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
     - time: 0.25
-      value: {fileID: 415155287, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+      value: {fileID: -646137538, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
     - time: 0.33333334
-      value: {fileID: 415155287, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+      value: {fileID: -646137538, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -69,7 +69,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 29770323
+      path: 152456914
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -83,11 +83,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1126933280, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
-    - {fileID: 1978793084, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
-    - {fileID: -822055849, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
-    - {fileID: 415155287, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
-    - {fileID: 415155287, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+    - {fileID: 1021176958, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+    - {fileID: -882931503, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+    - {fileID: 472733564, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+    - {fileID: -646137538, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+    - {fileID: -646137538, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -122,7 +122,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.35
+        time: 0.35000002
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -134,7 +134,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Crowbar/CrowbarUp
+    path: Crowbar/CrowbarRight
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []

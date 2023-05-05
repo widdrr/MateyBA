@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb7f3829992d57c4ba6cfe926f8b1933, type: 3}
-  m_Name: Crowbar
+  m_Name: Glock
   m_EditorClassIdentifier: 
-  weaponSprite: {fileID: 661732559, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
-  weaponName: Crowbar I
-  type: 1
-  damage: 2
-  waitingTime: 0.35
+  weaponName: Glock I
+  weaponSprite: {fileID: -870563758, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
+  type: 0
+  size: 1
+  damage: 1
+  waitingTime: 0.32
