@@ -32,9 +32,10 @@ public class WeaponSpriteManager : MonoBehaviour
             leftImage.GetComponent<Graphic>().color = new Color32(154, 120, 65, 255);
         }
     }
+    //Change right weapon image on HUD and the item from inventory
     public void ChangeRightWeapon(Weapon newweapon)
     {
-        if(inventory.rightWeapon && inventory.rightWeapon.size == WeaponSize.doubleSlot)
+        if (inventory.rightWeapon && inventory.rightWeapon.size == WeaponSize.doubleSlot)
         {
             inventory.leftWeapon = null;
             leftImage.sprite = null;
@@ -45,13 +46,14 @@ public class WeaponSpriteManager : MonoBehaviour
         rightImage.color = Color.white;
         inventory.rightWeapon = newweapon;
 
-        if(newweapon.size == WeaponSize.doubleSlot)
+        if (newweapon.size == WeaponSize.doubleSlot)
         {
             leftImage.sprite = newweapon.weaponSprite;
             inventory.leftWeapon = newweapon;
             leftImage.color = Color.white;
         }
     }
+    //Change left weapon image on HUD and the item from inventory
     public void ChangeLeftWeapon(Weapon newweapon) 
     { 
         if(inventory.leftWeapon && inventory.leftWeapon.size == WeaponSize.doubleSlot)

@@ -15,6 +15,6 @@ MonoBehaviour:
   weaponName: Glock I
   weaponSprite: {fileID: -870563758, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
   type: 0
-  size: 1
+  size: 0
   damage: 1
-  waitingTime: 0.48
+  waitingTime: 0.7

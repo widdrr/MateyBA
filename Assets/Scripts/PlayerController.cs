@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     private Animator animator;
     private PlayerState currentState;
     private Rigidbody2D playerRigidbody;
+
     public Inventory inventory;
+    public ProjectileBehaviour projectilePrefab;
+    public Transform launchOffSet;
 
     private void Start()
     {
@@ -97,6 +100,15 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         currentState = PlayerState.idle;
     }
 
+    //Instantiate a new projectile 
+    public void Shoot()
+    {
+        float moveX = animator.GetFloat("moveX");
+        float moveY = animator.GetFloat("moveY");
+        Vector2 shootDirection = moveX != 0 ? new Vector2(moveX, 0) : new Vector2(0, moveY);
+        ProjectileBehaviour newBullet = Instantiate(projectilePrefab, launchOffSet.position, Quaternion.identity);
+        newBullet.transform.right = shootDirection;
+    }
     private void MoveCharacter(Vector3 change)
     {
         playerRigidbody.MovePosition(
