@@ -1,9 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Threading;
 using UnityEngine;
 
 public enum PlayerState
@@ -14,57 +9,62 @@ public enum PlayerState
     staggered,
 }
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IOnHitSubscriber
 {
-
     public float speed;
-    public float knockbackAmount;
 
+    private Animator animator;
     private PlayerState currentState;
     private Rigidbody2D playerRigidbody;
-    private Vector3 change;
-    private Animator animator;
-    private HealthManager healthManager;
-    void Start()
+
+    public Inventory inventory;
+    public ProjectileBehaviour projectilePrefab;
+    public Transform launchOffSet;
+
+    private void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        healthManager = GameObject.Find("HealthContainers").GetComponent<HealthManager>();
+        currentState = PlayerState.idle;
 
-        //We want the player to face the camera by default
+        // Set default animation
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
     }
 
-    //This works better in Update than it does in FixedUpdate
-    void Update()
+    private void Update()
     {
-        if (Input.GetButtonDown("Attack") && currentState != PlayerState.attacking)
+        if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking && inventory.leftWeapon)
         {
-            StartCoroutine(AttackSequence());
+            StartCoroutine(LeftAttackSequence());
+        }
+        else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking && inventory.rightWeapon)
+        {
+            StartCoroutine(RightAttackSequence());
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        change = Vector3.zero;
-        //If the user uses a movement key, the value will change accordingly based on the axis. It can have 3 values (1,0,-1).
+        var change = Vector3.zero;
+
+        // If the user uses a movement key, the value will change accordingly based on the axis. It can have 3 values (1,0,-1).
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        //Call the function to update the animation.
+        // Call the function to update the animation.
         if (currentState == PlayerState.idle || currentState == PlayerState.moving)
         {
-            UpdateAnimationAndMove();
+            UpdateAnimationAndMove(change);
         }
     }
 
-    void UpdateAnimationAndMove()
+    private void UpdateAnimationAndMove(Vector3 change)
     {
-        //We check if we have a movement input, if we do we change the position of the character.
+        // We check if we have a movement input, if we do we change the position of the character.
         if (change != Vector3.zero)
         {
-            MoveCharacter();
+            MoveCharacter(change);
             change.x = Mathf.Round(change.x);
             change.y = Mathf.Round(change.y);
             animator.SetFloat("moveX", change.x);
@@ -79,50 +79,57 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //This coroutine gets called when attacking:
-    //we set our state to attacking and begin the attack animation
-    //we wait for 1 frame, then disable the animation flag (otherwise it would infinitely repeat the first frame)
-    //we then wait 0.4s before returning to idle
-    IEnumerator AttackSequence()
+    private IEnumerator LeftAttackSequence()
     {
         currentState = PlayerState.attacking;
-        animator.SetBool("attacking", true);
+        animator.SetBool(inventory.leftWeapon.type + "attacking", true);
         yield return null;
 
-        animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(0.3f);
-
+        animator.SetBool(inventory.leftWeapon.type + "attacking", false);
+        yield return new WaitForSeconds(inventory.leftWeapon.waitingTime);
         currentState = PlayerState.idle;
-
     }
-
-    public virtual void TakeDamage(Vector3 hitDirection, int damage = 0)
+    private IEnumerator RightAttackSequence()
     {
-        healthManager.SubtractHealth(damage);
+        currentState = PlayerState.attacking;
+        animator.SetBool(inventory.rightWeapon.type + "attacking", true);
+        yield return null;
 
-        currentState = PlayerState.staggered;
-
-        change = Vector3.zero;
-        Vector2 knockbackDireciton = transform.position - hitDirection;
-        playerRigidbody.AddForce(knockbackDireciton.normalized * knockbackAmount, ForceMode2D.Impulse);
-
-        StartCoroutine(StopKnockback(0.3f));
-    }
-
-    protected IEnumerator StopKnockback(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-
-        playerRigidbody.velocity = Vector3.zero;
+        animator.SetBool(inventory.rightWeapon.type + "attacking", false);
+        yield return new WaitForSeconds(inventory.rightWeapon.waitingTime);
         currentState = PlayerState.idle;
     }
 
-
-    //Moves the RigidBody according to the change vector
-    void MoveCharacter()
+    //Instantiate a new projectile 
+    public void Shoot()
+    {
+        float moveX = animator.GetFloat("moveX");
+        float moveY = animator.GetFloat("moveY");
+        Vector2 shootDirection = moveX != 0 ? new Vector2(moveX, 0) : new Vector2(0, moveY);
+        ProjectileBehaviour newBullet = Instantiate(projectilePrefab, launchOffSet.position, Quaternion.identity);
+        newBullet.transform.right = shootDirection;
+    }
+    private void MoveCharacter(Vector3 change)
     {
         playerRigidbody.MovePosition(
-          transform.position + change.normalized * speed * Time.deltaTime
-            );
+            transform.position + speed * Time.deltaTime * change.normalized
+        );
+    }
+
+    public void OnHit(OnHitPayload payload)
+    {
+        StartCoroutine(Stagger(0.32f));
+    }
+
+    protected IEnumerator Stagger(float seconds)
+    {
+        currentState = PlayerState.staggered;
+        yield return new WaitForSeconds(seconds);
+        currentState = PlayerState.idle;
+    }
+
+    public void DeathSequence()
+    {
+        Debug.Log("Player died lmao");
     }
 }
