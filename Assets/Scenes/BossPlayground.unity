@@ -263,7 +263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &163263295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,27 +398,7 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1389788957}
-    m_ColliderPaths:
-    - - X: 1792435
-        Y: 3561131
-      - X: -1893779
-        Y: 3561131
-      - X: -1893779
-        Y: -4272632
-      - X: 1792435
-        Y: -4272632
-  - m_Collider: {fileID: 2065034750}
-    m_ColliderPaths:
-    - - X: 4646217
-        Y: -53769
-      - X: -4381917
-        Y: -53769
-      - X: -4381917
-        Y: -4964187
-      - X: 4646217
-        Y: -4964187
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 0.4645924, y: -0.4964187}
@@ -1696,7 +1676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454506960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.83, y: 2.75, z: 0}
+  m_LocalPosition: {x: 0.8, y: 2.744, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3052,6 +3032,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &544478406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544478407}
+  m_Layer: 0
+  m_Name: LaunchOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &544478407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544478406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1404226093}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &562173669
 GameObject:
   m_ObjectHideFlags: 0
@@ -5702,12 +5713,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1404226093}
   - component: {fileID: 1404226095}
+  - component: {fileID: 1404226102}
   - component: {fileID: 1404226098}
   - component: {fileID: 1404226097}
   - component: {fileID: 1404226096}
   - component: {fileID: 1404226100}
   - component: {fileID: 1404226101}
   - component: {fileID: 1404226099}
+  - component: {fileID: 1404226103}
   m_Layer: 0
   m_Name: BossTest
   m_TagString: Untagged
@@ -5723,10 +5736,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404226092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.07, y: 1.55, z: 0}
+  m_LocalPosition: {x: -6.52, y: -2.72, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 544478407}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5821,10 +5835,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ce353fd68ac61498a64752941fa4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   deathSequence:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1404226102}
+        m_TargetAssemblyTypeName: GenericEnemyController, Assembly-CSharp
+        m_MethodName: DeathSequence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &1404226099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5863,7 +5889,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -5886,6 +5912,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 0
   targets: 00000000
+--- !u!114 &1404226102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404226092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ab0e42d04e92b4398868c0b942c09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  enemyName: Pirorozaur
+  currentState: 0
+  targetPlayer: {fileID: 454506970}
+  projectilePrefab: {fileID: 4000530902669160807, guid: b93afe2d36eab4d49b7b9eaf57c0bd35, type: 3}
+  launchOffSet: {fileID: 544478407}
+--- !u!95 &1404226103
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404226092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6dc6a76d8fed0a45bc5635255ad8aa7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1419498143
 GameObject:
   m_ObjectHideFlags: 0
@@ -5961,6 +6025,7 @@ GameObject:
   - component: {fileID: 1422866122}
   - component: {fileID: 1422866124}
   - component: {fileID: 1422866123}
+  - component: {fileID: 1422866125}
   m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
@@ -9256,6 +9321,26 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &1422866125
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422866121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6dc6a76d8fed0a45bc5635255ad8aa7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1460445321
 GameObject:
   m_ObjectHideFlags: 0
@@ -11100,20 +11185,20 @@ GameObject:
   - component: {fileID: 1915178143}
   - component: {fileID: 1915178142}
   - component: {fileID: 1915178141}
-  - component: {fileID: 1915178140}
   - component: {fileID: 1915178139}
   - component: {fileID: 1915178138}
   - component: {fileID: 1915178137}
   - component: {fileID: 1915178136}
   - component: {fileID: 1915178146}
   - component: {fileID: 1915178145}
+  - component: {fileID: 1915178147}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1915178136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11184,26 +11269,6 @@ MonoBehaviour:
   speed: 1
   enemyName: Rat
   currentState: 0
---- !u!95 &1915178140
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915178133}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b39c0400f2fb52f4f8650361a4c28720, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!66 &1915178141
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -11221,27 +11286,7 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1983262924}
-    m_ColliderPaths:
-    - - X: 1792435
-        Y: 3561131
-      - X: -1893779
-        Y: 3561131
-      - X: -1893779
-        Y: -4272632
-      - X: 1792435
-        Y: -4272632
-  - m_Collider: {fileID: 278622988}
-    m_ColliderPaths:
-    - - X: 4646217
-        Y: -53769
-      - X: -4381917
-        Y: -53769
-      - X: -4381917
-        Y: -4964187
-      - X: 4646217
-        Y: -4964187
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 0.4645924, y: -0.4964187}
@@ -11371,6 +11416,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+--- !u!95 &1915178147
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915178133}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b39c0400f2fb52f4f8650361a4c28720, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1930637172
 GameObject:
   m_ObjectHideFlags: 0

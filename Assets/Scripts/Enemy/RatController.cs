@@ -48,7 +48,7 @@ public class RatController : GenericEnemyController, IOnHitSubscriber
 
             //Perform the next movementDirection change after 3 seconds
             changeTime = false;
-            StartCoroutine(SetTimer(Random.Range(1.5f,3.5f)));
+            StartCoroutine(Helpers.SetTimer(Random.Range(1.5f,3.5f), resetChange));
         }
 
         if (currentState == EnemyState.moving)
@@ -72,9 +72,8 @@ public class RatController : GenericEnemyController, IOnHitSubscriber
 
     //this coroutine sets changeTime to true after waiting the given seconds
     //by calling this asynchronously I can delay setting the flag.
-    protected IEnumerator SetTimer(float seconds)
+    protected void resetChange()
     {
-        yield return new WaitForSeconds(seconds);
         changeTime = true;
     }
 
