@@ -20,11 +20,13 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public Inventory inventory;
     public ProjectileBehaviour projectilePrefab;
     public Transform launchOffSet;
+    public HealthManager healthManager;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        healthManager = GetComponent<HealthManager>();
         currentState = PlayerState.idle;
 
         // Set default animation
@@ -41,6 +43,13 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking && inventory.rightWeapon)
         {
             StartCoroutine(RightAttackSequence());
+        }
+
+        if(Input.GetKeyDown(KeyCode.L)){
+            if(healthManager.CurrentHealth < healthManager.maxHealth && inventory.potions > 0){
+                inventory.potions = inventory.potions - 1;
+                healthManager.RestoreHealth(2);
+                }
         }
     }
 

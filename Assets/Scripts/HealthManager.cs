@@ -23,4 +23,9 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
             deathSequence.Invoke();
         }
     }
+
+    public void RestoreHealth(int value){
+        
+        CurrentHealth = CurrentHealth + value;
+    }
 }
