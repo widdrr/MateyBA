@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46aec09d628df5547988f1a85ba19ba1
+guid: 2429fb4eee238ed41be2dd4689bb3cb9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -117,43 +119,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CustomTilesForGroundRightBRD_0
+      name: CustomTilesMarginTopLeft_0
       rect:
         serializedVersion: 2
         x: 0
         y: 16
-        width: 17
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: -3, y: -8}
+        - {x: -3, y: 3}
+        - {x: 8, y: 3}
+        - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 0be589d617782eb4eba4aa12ff8e9892
-      internalID: 613159016
+      spriteID: 22855859fcd446f478e1c6471fd751b4
+      internalID: -2072873841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CustomTilesForGroundRightBRD_1
+      name: CustomTilesMarginTopLeft_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1b7c9b30532ece4890f869713073b6b
-      internalID: 1125339288
+      spriteID: 48502a90b8b75d84d92182829e650079
+      internalID: 566126271
       vertices: []
       indices: 
       edges: []
@@ -169,11 +177,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CustomTilesForGroundRightBRD_0: 613159016
-      CustomTilesForGroundRightBRD_1: 1125339288
-  spritePackingTag: 
+      CustomTilesMarginTopLeft_0: -2072873841
+      CustomTilesMarginTopLeft_1: 566126271
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

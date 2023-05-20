@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bc1f2343d0cb8244fa971b08020cd67b
+guid: 0fe74924183517b459b65d4d2fff954e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -117,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CustomTilesForGround2_0
+      name: CustomTilesMargin_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,22 +130,26 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: -3, y: -8}
+        - {x: -3, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 8ce76d07f8573324eb33fa21555d607f
-      internalID: -848975276
+      spriteID: c4863a638e53eca46b34a53a64e6546b
+      internalID: 551072940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CustomTilesForGround2_1
+      name: CustomTilesMargin_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -152,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d0ac0e9a18f9ca4d8f43f0d36abac7b
-      internalID: -2072745581
+      spriteID: 867beed58f8c73844aa724cea8626ca9
+      internalID: 1242509006
       vertices: []
       indices: 
       edges: []
@@ -169,11 +175,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CustomTilesForGround2_0: -848975276
-      CustomTilesForGround2_1: -2072745581
-  spritePackingTag: 
+      CustomTilesMargin_0: 551072940
+      CustomTilesMargin_1: 1242509006
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

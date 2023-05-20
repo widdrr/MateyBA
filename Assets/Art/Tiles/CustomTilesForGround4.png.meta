@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e72850e0153e9342a611b04289fd68e
+guid: cf7b600ccc885ca4285f136d05503261
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -117,43 +119,51 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CustomTilesForGroundDownLeftCornerBRD_0
+      name: CustomTilesForGround4_0
       rect:
         serializedVersion: 2
         x: 0
         y: 16
-        width: 17
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: 3}
+        - {x: 8, y: 3}
+        - {x: 8, y: 8}
+      tessellationDetail: 1
       bones: []
-      spriteID: 127da5679a9289049886797466b15737
-      internalID: 81709823
+      spriteID: 709d5189df3d7294aa52fc8f69e14ab9
+      internalID: -616444190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CustomTilesForGroundDownLeftCornerBRD_1
+      name: CustomTilesForGround4_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: 2}
+        - {x: 8, y: 2}
+        - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: b17fd580982acf24ab1e80f921231e2b
-      internalID: -1340208762
+      spriteID: 850da3781270b5845ae28204ca1a84fd
+      internalID: -580637044
       vertices: []
       indices: 
       edges: []
@@ -169,11 +179,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CustomTilesForGroundDownLeftCornerBRD_0: 81709823
-      CustomTilesForGroundDownLeftCornerBRD_1: -1340208762
-  spritePackingTag: 
+      CustomTilesForGround4_0: -616444190
+      CustomTilesForGround4_1: -580637044
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
