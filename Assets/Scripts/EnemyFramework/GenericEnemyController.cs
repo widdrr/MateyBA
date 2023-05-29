@@ -103,4 +103,10 @@ public abstract class GenericEnemyController : MonoBehaviour
         currentState = EnemyState.idle;
     }
 
+    protected void WakeUp()
+    {
+        this.enabled = true;
+        SendMessageUpwards("RegisterEnemy");
+    }
+
 }
