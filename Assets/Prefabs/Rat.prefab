@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6918464943757219315}
   - component: {fileID: 5246787349943205583}
-  - component: {fileID: 3999414917153822307}
-  - component: {fileID: 3236520152878295162}
   m_Layer: 0
   m_Name: HorizontalHitbox
   m_TagString: Enemy
@@ -79,33 +77,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.60187566, y: 0.32736123}
   m_EdgeRadius: 0
---- !u!114 &3999414917153822307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146148313820798793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596d5ba61f377c042b101854edd90c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
---- !u!114 &3236520152878295162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146148313820798793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da4ed04fab9a864489dda207d042cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 10
-  targets: 01000000
 --- !u!1 &5012969525140870658
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ce353fd68ac61498a64752941fa4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 200
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -375,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec28e5d8cddadb34181fab740f4447f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackAmount: 5
+  knockbackAmount: 1
 --- !u!114 &7917374888344469592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,8 +398,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8039409003479972479}
   - component: {fileID: 3292691477849024918}
-  - component: {fileID: 5073608864870141201}
-  - component: {fileID: 406342954110942968}
   m_Layer: 0
   m_Name: VerticalHitbox
   m_TagString: Enemy
@@ -496,30 +465,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24574772, y: 0.5222509}
   m_EdgeRadius: 0
---- !u!114 &5073608864870141201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134463924602477576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596d5ba61f377c042b101854edd90c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
---- !u!114 &406342954110942968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134463924602477576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da4ed04fab9a864489dda207d042cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 10
-  targets: 00000000
