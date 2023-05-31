@@ -17,7 +17,8 @@ public class RoomTransition : MonoBehaviour
             mainCamera.maxPosition = maxPosition;
             mainCamera.minPosition = minPosition;
             collision.transform.position += moveOffset;
-            enemyHandler.WakeUpEnemies();
+            if(enemyHandler != null )
+                enemyHandler.WakeUpEnemies();
         }
 
     }

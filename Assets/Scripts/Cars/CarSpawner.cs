@@ -10,7 +10,7 @@ public class CarSpawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SpawnCar", 0f, 5f);
+        InvokeRepeating("SpawnCar", 0f, Random.Range(2f,4f));
     }
     private void SpawnCar()
     {

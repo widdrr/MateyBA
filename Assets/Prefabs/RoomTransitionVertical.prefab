@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3883694103728267011
+--- !u!1 &3505946673458059694
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3226626359441586669}
-  - component: {fileID: 5428778885910731983}
-  - component: {fileID: 585855232607421747}
+  - component: {fileID: 950421414138281842}
+  - component: {fileID: 236584082007508222}
+  - component: {fileID: 5444015272402413281}
   m_Layer: 0
-  m_Name: RoomTransitionOrizontal
+  m_Name: RoomTransitionVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3226626359441586669
+--- !u!4 &950421414138281842
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3883694103728267011}
+  m_GameObject: {fileID: 3505946673458059694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.279115, y: -1.2741303, z: -3.8157637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5428778885910731983
+--- !u!61 &236584082007508222
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3883694103728267011}
+  m_GameObject: {fileID: 3505946673458059694}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -76,15 +76,15 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19527912, y: 2.29067}
+  m_Size: {x: 2.29067, y: 0.1952791}
   m_EdgeRadius: 0
---- !u!114 &585855232607421747
+--- !u!114 &5444015272402413281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3883694103728267011}
+  m_GameObject: {fileID: 3505946673458059694}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15db00f47e5f52d4392d5600e9cc4f2f, type: 3}
@@ -93,5 +93,5 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   maxPosition: {x: 0, y: 0}
   minPosition: {x: 0, y: 0}
-  moveOffset: {x: 1.2, y: 0, z: 0}
+  moveOffset: {x: 0, y: 1.2, z: 0}
   enemyHandler: {fileID: 0}
