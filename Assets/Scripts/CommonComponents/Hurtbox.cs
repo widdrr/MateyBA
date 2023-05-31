@@ -21,6 +21,16 @@ public class Hurtbox : MonoBehaviour
         GameObject target = other.gameObject;
         HandleCollision(target);
     }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        GameObject target = other.gameObject;
+        HandleCollision(target);
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        GameObject target = other.gameObject;
+        HandleCollision(target);
+    }
     private void HandleCollision(GameObject target)
     {
         target.TryGetComponent(out Hitbox hitbox);

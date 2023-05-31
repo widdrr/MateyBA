@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
         if(Input.GetKeyDown(KeyCode.L)){
             if(healthManager.CurrentHealth < healthManager.maxHealth && inventory.potions > 0){
-                inventory.potions = inventory.potions - 1;
+                inventory.potions--;
                 healthManager.RestoreHealth(2);
                 }
         }
