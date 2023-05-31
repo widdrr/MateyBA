@@ -42,10 +42,6 @@ public class Hurtbox : MonoBehaviour
             OnHitPayload payload = new(attackDamage, transform.position);
             ExecuteEvents.Execute<IOnHitSubscriber>(target, null, (handler, _) => handler.OnHit(payload));
         }
-        else
-        {
-            Debug.Log("invuln");
-        }
     }
 
 }
