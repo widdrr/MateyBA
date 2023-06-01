@@ -36355,6 +36355,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 422545171}
     m_Modifications:
+    - target: {fileID: 2249319666164618747, guid: 8786de2ddd64af64cb45a219e06aa6c0, type: 3}
+      propertyPath: knockbackAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3770596426437197223, guid: 8786de2ddd64af64cb45a219e06aa6c0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -36418,6 +36422,10 @@ PrefabInstance:
     - target: {fileID: 5012969525140870658, guid: 8786de2ddd64af64cb45a219e06aa6c0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053442341020535070, guid: 8786de2ddd64af64cb45a219e06aa6c0, type: 3}
+      propertyPath: maxHealth
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
