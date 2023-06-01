@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7270615197755224682}
   - component: {fileID: 1109297929367546146}
   - component: {fileID: 7061867888127441751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2641264089333577415}
   - component: {fileID: 5605439686061990302}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HorizontaHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3758231083803847686}
   - component: {fileID: 7584531317439863503}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VerticalHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 7677469733828855757}
   - component: {fileID: 4180828285847264866}
   - component: {fileID: 3394622413079780330}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 2153965487165516486}
   - component: {fileID: 2730313755624809900}
   - component: {fileID: 1464018160014099307}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 8531858839383806902}
   - component: {fileID: 1659855543223808697}
   - component: {fileID: 7260034137044649413}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8190114947174849935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.44, y: 0.03, z: 0.2778298}
+  m_LocalPosition: {x: -22.44, y: 0.03, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -561,7 +561,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8190114947174849935}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98e116e7c157e2146b323a1eee6cd10c, type: 3}
   m_Name: 
@@ -666,9 +666,9 @@ MonoBehaviour:
   enemyName: Dog
   currentState: 0
   target: {fileID: 0}
-  jumpSpeed: 7
-  jumpRadius: 150
-  alertRadius: 500
+  jumpSpeed: 12
+  jumpRadius: 3
+  alertRadius: 10
 --- !u!114 &8531858839383806902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,8 +694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23995aefb06e4f4d937c01844e6f40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
-  flashCount: 0
+  duration: 1
+  flashCount: 10
 --- !u!114 &7260034137044649413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 9117751598625405835}
   - component: {fileID: 2123033033248521093}
   - component: {fileID: 8034726402333827338}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

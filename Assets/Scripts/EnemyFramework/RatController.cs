@@ -66,8 +66,8 @@ public class RatController : GenericEnemyController, IOnHitSubscriber
         }
 
         if(currentState != EnemyState.staggered)
-            enemyRigidbody.AddForce(
-                transform.position + speed * Time.deltaTime * movementDirection, ForceMode2D.Impulse);
+            enemyRigidbody.MovePosition(
+                transform.position + speed * Time.deltaTime * movementDirection);
     }
 
     //this coroutine sets changeTime to true after waiting the given seconds

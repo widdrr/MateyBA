@@ -47,9 +47,9 @@ public class DogController : GenericEnemyController, IOnHitSubscriber
             movementDirection = movementDirection.normalized;
 
             currentState = EnemyState.moving;
+            
             enemyRigidbody.MovePosition(
                     transform.position + speed * Time.deltaTime * movementDirection);
-
 
             if (MovementIsHorizontal(movementDirection))
             {
@@ -73,12 +73,12 @@ public class DogController : GenericEnemyController, IOnHitSubscriber
     {
         attackingDirection = (target.transform.position
                          - transform.position).normalized;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         enemyRigidbody.AddForce(
                     GetComponent<Rigidbody2D>().mass * jumpSpeed * attackingDirection, 
                     ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(0.5f);
         enemyRigidbody.velocity= Vector3.zero;
-        StartCoroutine(Stagger(1f));
+        StartCoroutine(Stagger(Random.Range(1f,2f)));
     }
 }

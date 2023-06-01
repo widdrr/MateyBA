@@ -11,14 +11,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - TestLayer
+  - Weapon
   - Water
   - UI
   - Camera
   - Tilemap
   - Player
-  - 
-  - 
+  - Enemy
+  - Invulnerable
   - 
   - 
   - 
