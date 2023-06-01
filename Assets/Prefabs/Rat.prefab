@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ce353fd68ac61498a64752941fa4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 20
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec28e5d8cddadb34181fab740f4447f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackAmount: 1
+  knockbackAmount: 3
 --- !u!114 &7917374888344469592
 MonoBehaviour:
   m_ObjectHideFlags: 0
