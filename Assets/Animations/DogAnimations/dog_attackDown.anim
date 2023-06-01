@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: dog_attackLeft
+  m_Name: dog_attackDown
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.1666666
+        time: 1
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -43,7 +43,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: HorizontaHitbox/AttackLeft
+    path: VerticalHitbox/AttackDown
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -51,11 +51,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -587826815, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
+      value: {fileID: 238439753, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
     - time: 0.33333334
-      value: {fileID: -220027937, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
-    - time: 1.1666666
-      value: {fileID: -587826815, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
+      value: {fileID: 615950971, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
+    - time: 1
+      value: {fileID: 238439753, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -69,7 +69,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 722701179
+      path: 2533547692
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -87,15 +87,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -587826815, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
-    - {fileID: -220027937, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
-    - {fileID: -587826815, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
+    - {fileID: 238439753, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
+    - {fileID: 615950971, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
+    - {fileID: 238439753, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1833333
+    m_StopTime: 1.0166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -125,7 +125,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.1666666
+        time: 1
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -137,7 +137,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: HorizontaHitbox/AttackLeft
+    path: VerticalHitbox/AttackDown
     classID: 1
     script: {fileID: 0}
     flags: 0

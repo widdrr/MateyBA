@@ -66,8 +66,8 @@ public class RatController : GenericEnemyController, IOnHitSubscriber
         }
 
         if(currentState != EnemyState.staggered)
-            enemyRigidbody.MovePosition(
-                transform.position + speed * Time.deltaTime * movementDirection);
+            enemyRigidbody.AddForce(
+                transform.position + speed * Time.deltaTime * movementDirection, ForceMode2D.Impulse);
     }
 
     //this coroutine sets changeTime to true after waiting the given seconds
@@ -76,12 +76,5 @@ public class RatController : GenericEnemyController, IOnHitSubscriber
     {
         yield return new WaitForSeconds(seconds);
         changeTime = true;
-    }
-
-    protected bool MovementIsHorizontal(Vector3 direction)
-    {
-        return Mathf.Abs(Vector3.Dot(direction, Vector3.right)) 
-                >= 
-               Mathf.Abs(Vector3.Dot(direction, Vector3.up)); 
     }
 }

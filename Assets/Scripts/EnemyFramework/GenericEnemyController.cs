@@ -22,6 +22,7 @@ public abstract class GenericEnemyController : MonoBehaviour
     protected Rigidbody2D enemyRigidbody;
     protected Animator enemyAnimator;
     protected Vector3 movementDirection;
+    protected Vector3 attackingDirection;
     //Initialization
     protected void Start()
     {
@@ -63,9 +64,15 @@ public abstract class GenericEnemyController : MonoBehaviour
 
             case EnemyState.staggered:
                 enemyAnimator.SetBool("moving", false);
+                enemyAnimator.SetBool("attacking", false);
                 break;
             case EnemyState.dying:
                 enemyAnimator.SetBool("dying", true);
+                break;
+            case EnemyState.attacking:
+                enemyAnimator.SetBool("attacking", true);
+                enemyAnimator.SetFloat("moveX", attackingDirection.x);
+                enemyAnimator.SetFloat("moveY", attackingDirection.y);
                 break;
         }
     }
@@ -107,6 +114,13 @@ public abstract class GenericEnemyController : MonoBehaviour
     {
         this.enabled = true;
         SendMessageUpwards("RegisterEnemy");
+    }
+
+    protected static bool MovementIsHorizontal(Vector3 direction)
+    {
+        return Mathf.Abs(Vector3.Dot(direction, Vector3.right))
+                >=
+               Mathf.Abs(Vector3.Dot(direction, Vector3.up));
     }
 
 }
