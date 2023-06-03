@@ -11,7 +11,7 @@ public class ProjectileBehaviour : MonoBehaviour
         transform.position += speed * Time.deltaTime * transform.right;
     }
     //destoy object on contact with another object
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerStay2D(Collider2D other)
     {
         Destroy(gameObject);
     }

@@ -77,11 +77,4 @@ public class RatController : GenericEnemyController, IOnHitSubscriber
         yield return new WaitForSeconds(seconds);
         changeTime = true;
     }
-
-    protected bool MovementIsHorizontal(Vector3 direction)
-    {
-        return Mathf.Abs(Vector3.Dot(direction, Vector3.right)) 
-                >= 
-               Mathf.Abs(Vector3.Dot(direction, Vector3.up)); 
-    }
 }

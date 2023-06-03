@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6918464943757219315}
   - component: {fileID: 5246787349943205583}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HorizontalHitbox
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7917374888344469592}
   - component: {fileID: 7768080550741827989}
   - component: {fileID: 8741193952485029607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8039409003479972479}
   - component: {fileID: 3292691477849024918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VerticalHitbox
   m_TagString: Enemy
   m_Icon: {fileID: 0}

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: rat_idleDown
+  m_Name: dog_idleLeft
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -359271696, guid: 42d8b71c8179db8449376ee426f8523d, type: 3}
+      value: {fileID: 1735909574, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -359271696, guid: 42d8b71c8179db8449376ee426f8523d, type: 3}
+    - {fileID: 1735909574, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
