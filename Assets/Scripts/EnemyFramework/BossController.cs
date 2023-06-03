@@ -22,6 +22,19 @@ public class BossController : GenericEnemyController
         base.Start();
         StartCoroutine(Helpers.SetTimer(fireCooldownDuration, ResetCooldown));
     }
+
+    protected new void FixedUpdate() 
+    {
+        base.FixedUpdate();
+        if(targetPlayer.position.y > transform.position.y)
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 2;
+        }
+    }
     protected override void AttackSequence()
     {
         attackingDirection = (targetPlayer.position
@@ -50,7 +63,7 @@ public class BossController : GenericEnemyController
     protected void MeleeAttack()
     {
         enemyAnimator.SetBool("melee", true);
-        StartCoroutine(Helpers.SetTimer(1.35f, ResetAttacking));
+        StartCoroutine(Helpers.SetTimer(1.4f, ResetAttacking));
 
     }
 

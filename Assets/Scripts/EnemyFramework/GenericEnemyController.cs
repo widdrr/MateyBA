@@ -32,6 +32,7 @@ public abstract class GenericEnemyController : MonoBehaviour
     }
 
     //Main Enemy Loop: Attack if condition is satisfied, else do IdleBehaviour
+
     protected void FixedUpdate()
     {
             if (ConditionIsSatisfied())
