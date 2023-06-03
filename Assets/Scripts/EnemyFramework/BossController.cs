@@ -1,39 +1,78 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class BossController : GenericEnemyController
 {
-    public Rigidbody2D targetPlayer;
-    bool fireCooldown = true;
+    public Transform targetPlayer;
     public ProjectileBehaviour projectilePrefab;
     public Transform launchOffSet;
+    public int bulletCount;
+    public float fireInterval;
+    public float fireCooldownDuration;
+    public float meleeRadius;
+
+    bool fireCooldown = true;
+    bool doMelee = false;
 
     protected new void Start()
     {
         base.Start();
-        StartCoroutine(Helpers.SetTimer(2, resetCooldown));
+        StartCoroutine(Helpers.SetTimer(fireCooldownDuration, ResetCooldown));
     }
     protected override void AttackSequence()
     {
-        fireCooldown = true;
+        attackingDirection = (targetPlayer.position
+                             - transform.position).normalized;
         currentState = EnemyState.attacking;
-        StartCoroutine(Helpers.RepeatWithDelay(10, 0.1f, Fire));
-        StartCoroutine(Helpers.SetTimer(1, resetAttacking));
-        StartCoroutine(Helpers.SetTimer(5, resetCooldown));
+        if (doMelee)
+        {
+            doMelee = false;
+            MeleeAttack();
+        }
+        else
+        {
+            RangedAttack();
+        }
+    }
+
+    protected void RangedAttack()
+    {
+        fireCooldown = true;
+        enemyAnimator.SetBool("fire", true);
+        StartCoroutine(Helpers.RepeatWithDelay(bulletCount, fireInterval, Fire));
+        StartCoroutine(Helpers.SetTimer(bulletCount * fireInterval, ResetAttacking));
+        StartCoroutine(Helpers.SetTimer(bulletCount * fireInterval + fireCooldownDuration, ResetCooldown));
+    }
+
+    protected void MeleeAttack()
+    {
+        enemyAnimator.SetBool("melee", true);
+        StartCoroutine(Helpers.SetTimer(1.35f, ResetAttacking));
+
     }
 
     protected override bool ConditionIsSatisfied()
     {
-        return !fireCooldown;
+        return currentState != EnemyState.attacking &&
+            (!fireCooldown || MeleeCondition());
+    }
+
+    private bool MeleeCondition()
+    {
+        if ((targetPlayer.position - 
+            transform.position).magnitude < meleeRadius)
+            doMelee = true;
+        return doMelee;
     }
 
     protected override void IdleBehaviour()
     {
         if (currentState == EnemyState.idle || currentState == EnemyState.moving)
         {
-            movementDirection = (targetPlayer.transform.position
+            movementDirection = (targetPlayer.position
                                  - transform.position).normalized;
             currentState = EnemyState.moving;
             enemyRigidbody.MovePosition(
@@ -43,19 +82,20 @@ public class BossController : GenericEnemyController
 
     protected void Fire()
     {
-        Vector3 shootDirection = (targetPlayer.transform.position
+        attackingDirection = (targetPlayer.position
                                       - transform.position).normalized;
-        launchOffSet.position = transform.position + 2 * shootDirection;
         ProjectileBehaviour newBullet = Instantiate(projectilePrefab, launchOffSet.position, Quaternion.identity);
-        newBullet.transform.right = shootDirection;
+        newBullet.transform.right = attackingDirection;
     }
-    protected void resetCooldown()
+    protected void ResetCooldown()
     {
         fireCooldown = false;
     }
-    protected void resetAttacking()
+    protected void ResetAttacking()
     {
         currentState = EnemyState.idle;
+        enemyAnimator.SetBool("melee", false);
+        enemyAnimator.SetBool("fire", false);
     }
 
 }

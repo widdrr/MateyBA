@@ -54,12 +54,14 @@ public abstract class GenericEnemyController : MonoBehaviour
         {
             case EnemyState.idle:
                 enemyAnimator.SetBool("moving", false);
+                enemyAnimator.SetBool("attacking", false);
                 break;
 
             case EnemyState.moving:
                 enemyAnimator.SetFloat("moveX", movementDirection.x);
                 enemyAnimator.SetFloat("moveY", movementDirection.y);
                 enemyAnimator.SetBool("moving", true);
+                enemyAnimator.SetBool("attacking", false);
                 break;
 
             case EnemyState.staggered:
