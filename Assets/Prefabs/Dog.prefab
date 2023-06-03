@@ -515,7 +515,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 704709637, guid: 473c321109685de4f8c4e8e5c697a4d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -665,7 +665,6 @@ MonoBehaviour:
   speed: 5
   enemyName: Dog
   currentState: 0
-  target: {fileID: 0}
   jumpSpeed: 12
   jumpRadius: 3
   alertRadius: 10

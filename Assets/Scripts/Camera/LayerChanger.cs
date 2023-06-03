@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class M : MonoBehaviour
+public class LayerChanger : MonoBehaviour
 {
     private Transform targetPlayer;
 
@@ -11,7 +11,7 @@ public class M : MonoBehaviour
     {
         targetPlayer = GameObject.FindWithTag("Player").transform;
     }
-    protected new void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (targetPlayer.position.y - 0.5 > transform.position.y)
         {

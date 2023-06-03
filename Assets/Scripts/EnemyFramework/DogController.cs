@@ -7,8 +7,8 @@ public class DogController : GenericEnemyController
 {
     protected BoxCollider2D verticalCollider;
     protected BoxCollider2D horizontalCollider;
+    protected  Transform target;
 
-    public Transform target;
     public float jumpSpeed;
     public float jumpRadius;
     public float alertRadius;
@@ -17,6 +17,7 @@ public class DogController : GenericEnemyController
     protected new void Start()
     {
         base.Start();
+        target = GameObject.FindWithTag("Player").transform;
         verticalCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
         horizontalCollider = transform.GetChild(1).GetComponent<BoxCollider2D>();
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BossController : GenericEnemyController
 {
-    public Transform targetPlayer;
+    protected Transform targetPlayer;
     public ProjectileBehaviour projectilePrefab;
     public Transform launchOffSet;
     public int bulletCount;
@@ -22,20 +22,8 @@ public class BossController : GenericEnemyController
     protected new void Start()
     {
         base.Start();
+        targetPlayer = GameObject.FindWithTag("Player").transform;
         StartCoroutine(Helpers.SetTimer(fireCooldownDuration, ResetCooldown));
-    }
-
-    protected new void FixedUpdate() 
-    {
-        base.FixedUpdate();
-        if (targetPlayer.position.y > transform.position.y)
-        {
-            GetComponent<SpriteRenderer>().sortingOrder = 3;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().sortingOrder = 1;
-        }
     }
     protected override void AttackSequence()
     {
