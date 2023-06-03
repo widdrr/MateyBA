@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class RatController : GenericEnemyController, IOnHitSubscriber
+public class RatController : GenericEnemyController
 {
     protected BoxCollider2D verticalCollider;
     protected BoxCollider2D horizontalCollider;

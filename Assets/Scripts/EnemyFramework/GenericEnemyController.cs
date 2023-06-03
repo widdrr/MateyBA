@@ -59,6 +59,7 @@ public abstract class GenericEnemyController : MonoBehaviour
                 break;
 
             case EnemyState.moving:
+                Debug.Log("Moving Set");
                 enemyAnimator.SetFloat("moveX", movementDirection.x);
                 enemyAnimator.SetFloat("moveY", movementDirection.y);
                 enemyAnimator.SetBool("moving", true);
@@ -76,6 +77,7 @@ public abstract class GenericEnemyController : MonoBehaviour
                 enemyAnimator.SetBool("attacking", true);
                 enemyAnimator.SetFloat("moveX", attackingDirection.x);
                 enemyAnimator.SetFloat("moveY", attackingDirection.y);
+                
                 break;
         }
     }

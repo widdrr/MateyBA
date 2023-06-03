@@ -2506,7 +2506,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -570406881, guid: c656df071fa1bba4593b218de3a77d17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -36308,7 +36308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ce353fd68ac61498a64752941fa4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 200
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -36408,13 +36408,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ab0e42d04e92b4398868c0b942c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
   enemyName: Dumi
   currentState: 0
   targetPlayer: {fileID: 454506972}
   projectilePrefab: {fileID: 4000530902669160807, guid: 59a499009471b504db0c7aeae78249c7, type: 3}
   launchOffSet: {fileID: 544478407}
-  bulletCount: 10
+  bulletCount: 50
   fireInterval: 0.1
   fireCooldownDuration: 5
   meleeRadius: 1.5
@@ -36428,7 +36428,7 @@ Animator:
   m_GameObject: {fileID: 1404226092}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3e043b3832d6b244c86bcf08e2747a6a, type: 2}
+  m_Controller: {fileID: 9100000, guid: cd406ca3c36e0dc4bbf0b6af632127bf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

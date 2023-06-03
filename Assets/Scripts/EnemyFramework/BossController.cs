@@ -26,13 +26,13 @@ public class BossController : GenericEnemyController
     protected new void FixedUpdate() 
     {
         base.FixedUpdate();
-        if(targetPlayer.position.y > transform.position.y)
+        if (targetPlayer.position.y > transform.position.y)
         {
-            GetComponent<SpriteRenderer>().sortingOrder = 0;
+            GetComponent<SpriteRenderer>().sortingOrder = 3;
         }
         else
         {
-            GetComponent<SpriteRenderer>().sortingOrder = 2;
+            GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
     }
     protected override void AttackSequence()
@@ -63,7 +63,7 @@ public class BossController : GenericEnemyController
     protected void MeleeAttack()
     {
         enemyAnimator.SetBool("melee", true);
-        StartCoroutine(Helpers.SetTimer(1.4f, ResetAttacking));
+        StartCoroutine(Helpers.SetTimer(1.683f, ResetAttacking));
 
     }
 
@@ -110,5 +110,8 @@ public class BossController : GenericEnemyController
         enemyAnimator.SetBool("melee", false);
         enemyAnimator.SetBool("fire", false);
     }
-
+    public override void OnHit(OnHitPayload payload)
+    {
+        return;
+    }
 }
