@@ -7,6 +7,8 @@ public class EnemyHandler : MonoBehaviour
     private int enemies = 0;
     public bool RoomCleared { get; private set; } = true;
 
+    public Pickup rewardPrefab;
+
     public void WakeUpEnemies()
     {
         BroadcastMessage("WakeUp",null,SendMessageOptions.DontRequireReceiver);
@@ -29,6 +31,10 @@ public class EnemyHandler : MonoBehaviour
         {
             RoomCleared = true;
             BroadcastMessage("DisableWall",null,SendMessageOptions.DontRequireReceiver);
+            if (rewardPrefab != null)
+            {
+                Instantiate(rewardPrefab, transform.position, Quaternion.identity);
+            }
         }
     }
 }
