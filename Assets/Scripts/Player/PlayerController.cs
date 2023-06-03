@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     private void FixedUpdate()
     {
         var change = Vector3.zero;
+        if (currentState != PlayerState.staggered)
+        {
+            playerRigidbody.velocity = Vector3.zero;
+        }
 
         // If the user uses a movement key, the value will change accordingly based on the axis. It can have 3 values (1,0,-1).
         change.x = Input.GetAxisRaw("Horizontal");
