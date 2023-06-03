@@ -17,6 +17,8 @@ public class BossController : GenericEnemyController
     bool fireCooldown = true;
     bool doMelee = false;
 
+    private Vector3 offset = new(0, -0.5f, 0);
+
     protected new void Start()
     {
         base.Start();
@@ -37,7 +39,7 @@ public class BossController : GenericEnemyController
     }
     protected override void AttackSequence()
     {
-        attackingDirection = (targetPlayer.position
+        attackingDirection = (targetPlayer.position + offset
                              - transform.position).normalized;
         currentState = EnemyState.attacking;
         if (doMelee)
@@ -95,7 +97,7 @@ public class BossController : GenericEnemyController
 
     protected void Fire()
     {
-        attackingDirection = (targetPlayer.position
+        attackingDirection = (targetPlayer.position + offset
                                       - transform.position).normalized;
         ProjectileBehaviour newBullet = Instantiate(projectilePrefab, launchOffSet.position, Quaternion.identity);
         newBullet.transform.right = attackingDirection;
