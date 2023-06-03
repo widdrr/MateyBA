@@ -13,7 +13,7 @@ public enum EnemyState
 }
 
 
-public abstract class GenericEnemyController : MonoBehaviour
+public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
 {
     public float speed;
     public string enemyName;

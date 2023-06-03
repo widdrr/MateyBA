@@ -29,13 +29,13 @@ public class Death : StateMachineBehaviour
     private void GenerateLoot()
     {
         int auxChance = Random.Range(1, 11);
-        if (auxChance >= 5 && auxChance <= 8)
+        if (auxChance >= 1 && auxChance <= 5)
         {
-            playerInventory.coins += 1;
+            playerInventory.coins += 2;
         }
         else if (auxChance >= 9)
         {
-            playerInventory.coins += 2;
+            playerInventory.coins += 4;
         }
         if (auxChance == 3)
         {
