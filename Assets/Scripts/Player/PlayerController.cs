@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState
 {
@@ -32,6 +33,9 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         // Set default animation
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
+
+        inventory.potions = 3;
+        inventory.coins = 0;
     }
 
     private void Update()
@@ -143,6 +147,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     public void DeathSequence()
     {
-        Debug.Log("Player died lmao");
+        SceneManager.LoadScene("MainMenu");
     }
 }
