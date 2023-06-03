@@ -9,7 +9,6 @@ public class HealthTextManager : MonoBehaviour
     public Sprite fullPill;
     public Sprite halfPill;
     public Sprite emptyPill;
-    public int pillContainers;
     public HealthManager playerHealth;
 
     void Start()
@@ -20,7 +19,7 @@ public class HealthTextManager : MonoBehaviour
     //Set active a specific number of pile objects
     public void InitHealth()
     {
-        for(int i = 0; i < pillContainers; i++)
+        for(int i = 0; i < playerHealth.maxHealth / 2; i++)
         {
             pills[i].gameObject.SetActive(true);
             pills[i].sprite = fullPill;
@@ -36,8 +35,12 @@ public class HealthTextManager : MonoBehaviour
     public void UpdateHealth()
     {
         int auxHealth = playerHealth.CurrentHealth;
-        for(int i = 0; i < pillContainers*2; i++)
+        for(int i = 0; i < playerHealth.maxHealth; i++)
         {
+            if (!pills[i / 2].gameObject.activeSelf)
+            {
+                pills[i/2].gameObject.SetActive(true);
+            }
             if( i < auxHealth)
             {
                 pills[i/2].sprite = fullPill;

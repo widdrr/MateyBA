@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
             StartCoroutine(RightAttackSequence());
         }
 
-        if(Input.GetKeyDown(KeyCode.L)){
+        if(Input.GetKeyDown(KeyCode.E)){
             if(healthManager.CurrentHealth < healthManager.maxHealth && inventory.potions > 0){
                 inventory.potions--;
                 healthManager.RestoreHealth(2);

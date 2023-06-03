@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class HealthUpgrade : Pickup
 {
+    public int healthUp;
     public override void OnPickup(GameObject picker)
     {
         HealthManager manager = picker.GetComponent<HealthManager>();
-        manager.maxHealth += 2;
-        manager.RestoreHealth(manager.maxHealth);
+        manager.maxHealth += healthUp;
+        manager.RestoreHealth(manager.maxHealth - manager.CurrentHealth);
     }
 }
