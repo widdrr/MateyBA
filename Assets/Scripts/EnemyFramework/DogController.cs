@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DogController : GenericEnemyController, IOnHitSubscriber
+public class DogController : GenericEnemyController
 {
     protected BoxCollider2D verticalCollider;
     protected BoxCollider2D horizontalCollider;

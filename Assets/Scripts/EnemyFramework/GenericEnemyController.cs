@@ -32,6 +32,7 @@ public abstract class GenericEnemyController : MonoBehaviour
     }
 
     //Main Enemy Loop: Attack if condition is satisfied, else do IdleBehaviour
+
     protected void FixedUpdate()
     {
             if (ConditionIsSatisfied())
@@ -54,12 +55,15 @@ public abstract class GenericEnemyController : MonoBehaviour
         {
             case EnemyState.idle:
                 enemyAnimator.SetBool("moving", false);
+                enemyAnimator.SetBool("attacking", false);
                 break;
 
             case EnemyState.moving:
+                Debug.Log("Moving Set");
                 enemyAnimator.SetFloat("moveX", movementDirection.x);
                 enemyAnimator.SetFloat("moveY", movementDirection.y);
                 enemyAnimator.SetBool("moving", true);
+                enemyAnimator.SetBool("attacking", false);
                 break;
 
             case EnemyState.staggered:
@@ -73,6 +77,7 @@ public abstract class GenericEnemyController : MonoBehaviour
                 enemyAnimator.SetBool("attacking", true);
                 enemyAnimator.SetFloat("moveX", attackingDirection.x);
                 enemyAnimator.SetFloat("moveY", attackingDirection.y);
+                
                 break;
         }
     }
