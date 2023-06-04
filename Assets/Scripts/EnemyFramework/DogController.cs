@@ -28,12 +28,14 @@ public class DogController : GenericEnemyController
         StartCoroutine(AttackRoutine());
     }
 
+    //target should be within jumpRadois
     protected override bool ConditionIsSatisfied()
     {
         return currentState == EnemyState.moving && 
               (target.transform.position - transform.position).magnitude < jumpRadius;
     }
 
+    //when not attacking, follows the target
     protected override void IdleBehaviour()
     {
         if (currentState == EnemyState.idle || currentState == EnemyState.moving)
@@ -52,6 +54,7 @@ public class DogController : GenericEnemyController
             enemyRigidbody.MovePosition(
                     transform.position + speed * Time.deltaTime * movementDirection);
 
+            //Dog sprite is not symmetrical so we need two different Hitboxes
             if (MovementIsHorizontal(movementDirection))
             {
                 verticalCollider.enabled = false;
@@ -65,11 +68,15 @@ public class DogController : GenericEnemyController
         }
     }
 
+    //Overrides the stagger handler
     public override void OnHit(OnHitPayload payload)
     {
         return;
     }
 
+    //The Dog pauses for half a second, before jumping towards the target
+    //HurtBoxes are activated via the Animation Clip
+    //After the attack it's staggered for 1-2 seconds 
     protected IEnumerator AttackRoutine()
     {
         attackingDirection = (target.transform.position
