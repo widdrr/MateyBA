@@ -12,9 +12,9 @@ public class EndGame : MonoBehaviour
     }
     public void FixedUpdate()
     {
-		if(player.maxHealth >= 12)
+		if(player.maxHealth > 12)
 	{
-	    	SceneManager.LoadScene("MainMenu");
+	    	SceneManager.LoadScene("CreditScene");
 	}
     }
 }
