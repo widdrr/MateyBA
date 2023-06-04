@@ -155,6 +155,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     //Upon Death, exit to Main Menu
     public void DeathSequence()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("RestartScreen");
     }
 }
