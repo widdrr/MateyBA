@@ -6,7 +6,7 @@
 * Tava Andrei-Daniel
 * Simion Petrica
 * Rosianu Robert
-* Titiriga Tiberiu
+* Titiriga Tiberiu-Nicolae
 * Biciusca Matei-Alexandru
 --------------
 ## Development Process:
