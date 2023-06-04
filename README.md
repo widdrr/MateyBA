@@ -7,7 +7,7 @@
 * Simion Petrica
 * Rosianu Robert
 * Titiriga Tiberiu
-* Biciusca Matey-Alexandru
+* Biciusca Matei-Alexandru
 --------------
 ## Development Process:
 
