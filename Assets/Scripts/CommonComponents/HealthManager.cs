@@ -29,4 +29,5 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
         
         CurrentHealth += value;
     }
+
 }
