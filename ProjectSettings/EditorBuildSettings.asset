@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: 3582ea5f4afad09489c634302b17dff1
+  - enabled: 1
+    path: Assets/Scenes/RestartScreen.unity
+    guid: 43b4ef4b5cbc8a442940e2314b80fd48
+  - enabled: 1
+    path: Assets/Scenes/CreditScene.unity
+    guid: a50b7df290495ab498338c6f03a2fcee
   m_configObjects: {}
