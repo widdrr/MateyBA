@@ -12,6 +12,7 @@ public class CarSpawner : MonoBehaviour
     {
         InvokeRepeating("SpawnCar", 0f, Random.Range(2f,4f));
     }
+
     private void SpawnCar()
     {
         int randomIndex = Random.Range(0, carPrefabs.Length);

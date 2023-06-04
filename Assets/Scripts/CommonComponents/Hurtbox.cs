@@ -11,6 +11,7 @@ public class Hurtbox : MonoBehaviour
     public int attackDamage;
     public List<HitboxType> targets;
 
+    //4 different methods to handle different types of collission
     void OnCollisionStay2D(Collision2D other)
     {
         GameObject target = other.gameObject;
@@ -31,6 +32,10 @@ public class Hurtbox : MonoBehaviour
         GameObject target = other.gameObject;
         HandleCollision(target);
     }
+
+    //test if the other object has a HitBox component
+    //if yes, check it's type against this HurtBox's targets
+    //if there's a match, send OnHit messages to all subscribers on the target
     private void HandleCollision(GameObject target)
     {
         target.TryGetComponent(out Hitbox hitbox);

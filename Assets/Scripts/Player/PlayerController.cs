@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     private void Update()
     {
+        //Attacking controlls
         if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking && inventory.leftWeapon)
         {
             StartCoroutine(LeftAttackSequence());
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
             StartCoroutine(RightAttackSequence());
         }
 
+        //Healing Item
         if(Input.GetKeyDown(KeyCode.E)){
             if(healthManager.CurrentHealth < healthManager.maxHealth && inventory.potions > 0){
                 inventory.potions--;
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     private void FixedUpdate()
     {
+        //Forcefully stops physics pushing
         var change = Vector3.zero;
         if (currentState != PlayerState.staggered)
         {
@@ -96,6 +99,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         }
     }
 
+    //Activates the LeftWeapon
     private IEnumerator LeftAttackSequence()
     {
         currentState = PlayerState.attacking;
@@ -106,6 +110,8 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         yield return new WaitForSeconds(inventory.leftWeapon.waitingTime);
         currentState = PlayerState.idle;
     }
+
+    //Activates the RightWeapon
     private IEnumerator RightAttackSequence()
     {
         currentState = PlayerState.attacking;
@@ -133,6 +139,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         );
     }
 
+    //Stagger OnHit handler
     public void OnHit(OnHitPayload payload)
     {
         StartCoroutine(Stagger(0.32f));
@@ -145,6 +152,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         currentState = PlayerState.idle;
     }
 
+    //Upon Death, exit to Main Menu
     public void DeathSequence()
     {
         SceneManager.LoadScene("MainMenu");

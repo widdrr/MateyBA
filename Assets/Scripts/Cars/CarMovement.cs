@@ -7,7 +7,6 @@ public class CarMovement : MonoBehaviour
     private Vector3 direction;
     private float speed;
     private Animator animator;
-
     public void InitializeMovement(Vector3 direction, float speedAux)
     {
         this.direction = direction.normalized;

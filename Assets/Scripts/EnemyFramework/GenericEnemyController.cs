@@ -100,7 +100,8 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         currentState = EnemyState.dying;
     }
 
-
+    //OnHit handler to stagger enemy for a short while
+    //While staggered, it does not do anything
     public virtual void OnHit(OnHitPayload payload)
     {
         movementDirection = Vector3.zero;
@@ -114,6 +115,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         currentState = EnemyState.idle;
     }
 
+    //WakeUp method sends a message to the EnemyHandler to register this enemy
     protected void WakeUp()
     {
         this.enabled = true;

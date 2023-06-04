@@ -9,21 +9,24 @@ public class EnemyHandler : MonoBehaviour
 
     public Pickup rewardPrefab;
 
+    //wakes up all child enemies
     public void WakeUpEnemies()
     {
         BroadcastMessage("WakeUp",null,SendMessageOptions.DontRequireReceiver);
         if(!RoomCleared)
         {
+            //if room has not been cleared, enable the walls
             BroadcastMessage("EnableWall", null, SendMessageOptions.DontRequireReceiver);
         }
     }
 
+    //If there is at least one enemy, room has not been cleared
     public void RegisterEnemy()
     {
         ++enemies;
         RoomCleared = false;
     }
-
+    //If there are no more enemies, room is cleared and walls are disabled
     public void UnregisterEnemy()
     {
         --enemies;

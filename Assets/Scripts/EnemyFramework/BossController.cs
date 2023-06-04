@@ -26,6 +26,8 @@ public class BossController : GenericEnemyController
         attackingDirection = (targetPlayer.position + offset
                              - transform.position).normalized;
         currentState = EnemyState.attacking;
+
+        //depending on the flag, we decide upon a Melee or Ranged attack
         if (doMelee)
         {
             doMelee = false;
@@ -37,6 +39,7 @@ public class BossController : GenericEnemyController
         }
     }
 
+    //Fires bulletCount bullets, with fireInterval pause inbetween
     protected void RangedAttack()
     {
         fireCooldown = true;
@@ -46,6 +49,7 @@ public class BossController : GenericEnemyController
         StartCoroutine(Helpers.SetTimer(bulletCount * fireInterval + fireCooldownDuration, ResetCooldown));
     }
 
+    //Smashes ground with weapon (attack is implemented in the Animation Clip)
     protected void MeleeAttack()
     {
         enemyAnimator.SetBool("melee", true);
@@ -53,12 +57,15 @@ public class BossController : GenericEnemyController
 
     }
 
+    //Enemy is corrently not attacking and either the ranged or melee conditions are satisfied
     protected override bool ConditionIsSatisfied()
     {
         return currentState != EnemyState.attacking &&
             (!fireCooldown || MeleeCondition());
     }
 
+    //targetPlayer should be close to the boss
+    //also sets the melee flag
     private bool MeleeCondition()
     {
         if ((targetPlayer.position - 
@@ -67,6 +74,7 @@ public class BossController : GenericEnemyController
         return doMelee;
     }
 
+    //When not attacking, the boss follows the player
     protected override void IdleBehaviour()
     {
         if (currentState == EnemyState.idle || currentState == EnemyState.moving)
@@ -79,6 +87,8 @@ public class BossController : GenericEnemyController
         }
     }
 
+    //instantiates and shoots a bullet towards the player
+    //offset is to make up for the fact that the Hitbox is not centered on the player transform.
     protected void Fire()
     {
         attackingDirection = (targetPlayer.position + offset
@@ -96,6 +106,8 @@ public class BossController : GenericEnemyController
         enemyAnimator.SetBool("melee", false);
         enemyAnimator.SetBool("fire", false);
     }
+
+    //Overriding the GenericEnemy OnHit handler which staggers on hit
     public override void OnHit(OnHitPayload payload)
     {
         return;

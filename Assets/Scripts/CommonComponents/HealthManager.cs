@@ -15,6 +15,7 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
         CurrentHealth = maxHealth;
     }
 
+    //subtracts damage when receiving a OnHit message
     public void OnHit(OnHitPayload payload)
     {
         CurrentHealth -= payload.damage;
@@ -26,6 +27,6 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
 
     public void RestoreHealth(int value){
         
-        CurrentHealth = CurrentHealth + value;
+        CurrentHealth += value;
     }
 }

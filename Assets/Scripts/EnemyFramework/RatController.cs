@@ -51,6 +51,7 @@ public class RatController : GenericEnemyController
             StartCoroutine(SetTimer(Random.Range(1.5f,3.5f)));
         }
 
+        //Sprite is not symmetrical so we require different HitBoxes
         if (currentState == EnemyState.moving)
         {
             if (MovementIsHorizontal(movementDirection))

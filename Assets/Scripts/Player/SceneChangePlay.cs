@@ -9,6 +9,8 @@ public class SceneChangePlay : MonoBehaviour
     {
         SetRatio(4, 3);   
     }
+
+    //Tries to set the resolution to the best 4:3 available from screen specs
     void SetRatio(float w, float h)
     {
         if ((((float)Screen.width) / ((float)Screen.height)) > w / h)
@@ -25,6 +27,7 @@ public class SceneChangePlay : MonoBehaviour
 	    SceneManager.LoadScene(sceneName);
     }
 
+    //Quiting the game
     public void Quit()
     {
         Application.Quit();
