@@ -9,7 +9,8 @@
 * Titiriga Tiberiu-Nicolae
 * Biciusca Matei-Alexandru
 --------------
-## [Gameplay Demo](https://discord.com/channels/893256151825805332/1045696876541911050/1115057861140156547)
+### [Gameplay Demo](https://discord.com/channels/893256151825805332/1045696876541911050/1115057861140156547)
+### [Presentation](https://docs.google.com/presentation/d/1ASE10eD-_Iw95rfnsjT-2F89h3lCQ4961G2DNJxuUgc/edit?usp=sharing)
 
 ## Development Process:
 
