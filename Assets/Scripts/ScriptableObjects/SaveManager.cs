@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEditor.Search;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewGameState", menuName = "Scriptable Objects/GameState")]
+[CreateAssetMenu(fileName = "NewSaveManager", menuName = "Scriptable Objects/SaveManager")]
 
 public class SaveManager : ScriptableObject
 {
