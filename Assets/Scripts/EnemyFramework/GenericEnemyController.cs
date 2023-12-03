@@ -23,6 +23,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     protected Animator enemyAnimator;
     protected Vector3 movementDirection;
     protected Vector3 attackingDirection;
+    protected Transform target;
     //Initialization
     protected void Start()
     {
@@ -97,6 +98,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
 
     public virtual void DeathSequence()
     {
+        movementDirection = Vector3.zero;
         currentState = EnemyState.dying;
     }
 
