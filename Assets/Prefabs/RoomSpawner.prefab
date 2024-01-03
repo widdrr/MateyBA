@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomReward: {fileID: 0}
   _saveManager: {fileID: 11400000, guid: db672004bd5233644bf7abb2c518d82a, type: 2}
+  _minimapTiles: {fileID: 0}
