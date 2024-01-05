@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public enum EnemyState
@@ -28,10 +29,14 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
 
     [SerializeField]
     protected float _staggerTime = 0.32f;
+    
+    [SerializeField]
+    private AudioSource _audioSource;
     //Initialization
     protected void Start()
     {
         currentState = EnemyState.idle;
+        _audioSource.time = 0.1f;
         enemyRigidbody = GetComponent<Rigidbody2D>();
         enemyAnimator = GetComponent<Animator>();
     }
@@ -103,7 +108,10 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     public virtual void DeathSequence()
     {
         movementDirection = Vector3.zero;
-
+        var kill = GameObject.FindWithTag("Kill");
+        var killSound = kill.GetComponent<AudioSource>();
+        killSound.time = 0.2f;
+        killSound.Play();
         currentState = EnemyState.dying;
     }
 
@@ -119,7 +127,9 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         {
             StopCoroutine(stagger);
         }
+        
         stagger = StartCoroutine(Stagger(_staggerTime));
+        _audioSource.Play();
     }
 
     protected IEnumerator Stagger(float seconds)

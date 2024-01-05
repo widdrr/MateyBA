@@ -7,7 +7,6 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
     public int CurrentHealth { get; set; }
 
     public UnityEvent deathSequence;
-
     private void Start()
     {
         CurrentHealth = maxHealth;

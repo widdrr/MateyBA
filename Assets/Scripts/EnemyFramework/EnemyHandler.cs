@@ -12,7 +12,9 @@ public class EnemyHandler : MonoBehaviour
 
     [SerializeField] 
     private GameObject _minimapTiles;
-
+    
+    [SerializeField] 
+    private AudioSource _endSound;
     public void Awake()
     {
         if (_saveManager.state.clearedRooms.Contains(name))
@@ -42,7 +44,7 @@ public class EnemyHandler : MonoBehaviour
 
         if (_minimapTiles != null) {
                 _minimapTiles.SetActive(true);
-            }
+        }
     }
 
     //If there is at least one enemy, room has not been cleared
@@ -58,6 +60,7 @@ public class EnemyHandler : MonoBehaviour
         {
             RoomCleared = true;
             BroadcastMessage("DisableWall",null,SendMessageOptions.DontRequireReceiver);
+            _endSound.Play();
             if (RoomReward != null)
             {
                 RoomReward.gameObject.SetActive(true);

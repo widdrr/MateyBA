@@ -10,10 +10,12 @@ public class DogController : GenericEnemyController
     public float jumpRadius;
     public float alertRadius;
 
-
+    [SerializeField]
+    private AudioSource _hitSound;
     protected new void Start()
     {
         base.Start();
+        _hitSound.time = 0.1f;
         target = GameObject.FindWithTag("Player").transform;
         verticalCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
         horizontalCollider = transform.GetChild(1).GetComponent<BoxCollider2D>();
@@ -63,6 +65,7 @@ public class DogController : GenericEnemyController
     //Overrides the stagger handler
     public override void OnHit(OnHitPayload payload)
     {
+        _hitSound.Play();
         return;
     }
 
