@@ -43,18 +43,24 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
         transform.position = saveManager.state.playerPosition;
         healthManager.CurrentHealth = saveManager.state.health;
+        healthManager.Armor = saveManager.state.playerArmor;
+        speed = saveManager.state.playerSpeed;
     }
 
     private void Update()
     {
         //Attacking controlls
-        if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking && inventory.leftWeapon)
+        if (Input.GetButtonDown("LeftAttack") && 
+            (currentState != PlayerState.attacking || currentState != PlayerState.staggered) && 
+            inventory.leftWeapon)
         {
-            StartCoroutine(LeftAttackSequence());
+            LeftAttackSequence();
         }
-        else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking && inventory.rightWeapon)
+        else if (Input.GetButtonDown("RightAttack") &&
+            (currentState != PlayerState.attacking || currentState != PlayerState.staggered)&& 
+            inventory.rightWeapon)
         {
-            StartCoroutine(RightAttackSequence());
+            RightAttackSequence();
         }
 
         //Healing Item
@@ -108,27 +114,27 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     }
 
     //Activates the LeftWeapon
-    private IEnumerator LeftAttackSequence()
+    private void LeftAttackSequence()
     {
+        animator.speed = inventory.leftWeapon.attackSpeed;
         currentState = PlayerState.attacking;
         crowbarAttackSound.Play();
         animator.SetBool(inventory.leftWeapon.type + "attacking", true);
-        yield return null;
-        
-        animator.SetBool(inventory.leftWeapon.type + "attacking", false);
-        yield return new WaitForSeconds(inventory.leftWeapon.waitingTime);
-        currentState = PlayerState.idle;
     }
 
     //Activates the RightWeapon
-    private IEnumerator RightAttackSequence()
+    private void RightAttackSequence()
     {
+        animator.speed = inventory.rightWeapon.attackSpeed;
         currentState = PlayerState.attacking;
         animator.SetBool(inventory.rightWeapon.type + "attacking", true);
-        yield return null;
+    }
 
+    public void ResetAttacking()
+    {
+        animator.speed = 1;
+        animator.SetBool(inventory.leftWeapon.type + "attacking", false);
         animator.SetBool(inventory.rightWeapon.type + "attacking", false);
-        yield return new WaitForSeconds(inventory.rightWeapon.waitingTime);
         currentState = PlayerState.idle;
     }
 
