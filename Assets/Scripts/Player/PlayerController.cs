@@ -51,13 +51,13 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     {
         //Attacking controlls
         if (Input.GetButtonDown("LeftAttack") && 
-            (currentState != PlayerState.attacking || currentState != PlayerState.staggered) && 
+            (currentState != PlayerState.attacking && currentState != PlayerState.staggered) && 
             inventory.leftWeapon)
         {
             LeftAttackSequence();
         }
         else if (Input.GetButtonDown("RightAttack") &&
-            (currentState != PlayerState.attacking || currentState != PlayerState.staggered)&& 
+            (currentState != PlayerState.attacking && currentState != PlayerState.staggered)&& 
             inventory.rightWeapon)
         {
             RightAttackSequence();
@@ -118,7 +118,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     {
         animator.speed = inventory.leftWeapon.attackSpeed;
         currentState = PlayerState.attacking;
-        crowbarAttackSound.Play();
         animator.SetBool(inventory.leftWeapon.type + "attacking", true);
     }
 
@@ -162,6 +161,11 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         StartCoroutine(Stagger(0.32f));
     }
 
+    private void PlayCrowbarSound()
+    {
+        crowbarAttackSound.Play();
+    }
+    
     protected IEnumerator Stagger(float seconds)
     {
         currentState = PlayerState.staggered;
