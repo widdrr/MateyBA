@@ -24,7 +24,7 @@ public class SlimeController : GenericEnemyController
         var hitbox = GetComponent<Hitbox>();
         hitbox.MakeInvulnerable();
         currentState = EnemyState.staggered;
-        StartCoroutine(Helpers.SetTimer(0.32f, () =>
+        StartCoroutine(Helpers.SetTimer(0.5f, () =>
         {
             hitbox.MakeVulnerable();
             currentState = EnemyState.idle;
@@ -35,6 +35,10 @@ public class SlimeController : GenericEnemyController
     private void LateUpdate()
     {
         transform.localScale = _scale;
+        if (currentState == EnemyState.dying)
+        {
+            transform.localScale = _scale / 2.5f;
+        }
     }
     protected override void AttackSequence()
     {
@@ -75,33 +79,43 @@ public class SlimeController : GenericEnemyController
 
     public override void DeathSequence()
     {
-        base.DeathSequence();
-
-        if (_splitsLeft == 0)
-        { 
-            return;
-        }
-
-        var sprite = GetComponent<SpriteRenderer>();
-        sprite.flipX = false;
-        sprite.color = Color.white;
-
-        for(int i = 0; i < _slimesToSpawn; ++i)
+        if (currentState != EnemyState.dying)
         {
-            var newSlime = Instantiate(this, transform.parent);
-            
-            newSlime._splitsLeft = _splitsLeft- 1;
-            newSlime.Scale();
+            base.DeathSequence();
 
-            Disperse(newSlime);
+            if (_splitsLeft == 0)
+            {
+                return;
+            }
 
-            SendMessageUpwards("RegisterEnemy", null, SendMessageOptions.DontRequireReceiver);
+            var sprite = GetComponent<SpriteRenderer>();
+            sprite.color = Color.white;
+
+            for (int i = 0; i < _slimesToSpawn; ++i)
+            {
+                var newSlime = Instantiate(this, transform.parent);
+
+                newSlime._splitsLeft = _splitsLeft - 1;
+                newSlime.Scale();
+
+                Disperse(newSlime);
+
+                SendMessageUpwards("RegisterEnemy", null, SendMessageOptions.DontRequireReceiver);
+            }
         }
     }
 
     private void Disperse(SlimeController newSlime)
     {
-        Vector3 force = new(Random.Range(-2,2), Random.Range(-2,2));
+        var hitDirection = (transform.position - target.position).normalized;
+        var knockbackDirection = new Vector2(hitDirection.x, hitDirection.z).normalized;
+        var perpendicular = Vector2.Perpendicular(knockbackDirection).normalized;
+
+        knockbackDirection *= Random.Range(3, 6);
+        perpendicular *= Random.Range(-6, 6);
+
+        var force = knockbackDirection + perpendicular;
+
         newSlime.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
     }
 }
