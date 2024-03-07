@@ -40,8 +40,14 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         // Set default animation
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
-
-        transform.position = saveManager.state.playerPosition;
+        if (SceneManager.GetActiveScene().name == "TestingEnvironment")
+        {
+            transform.position = Vector3.zero;
+        }
+        else
+        {
+            transform.position = saveManager.state.playerPosition;
+        }
     }
 
     private void Start()
@@ -95,7 +101,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         }
     }
 
-    private void UpdateAnimationAndMove(Vector3 change)
+    public void UpdateAnimationAndMove(Vector3 change)
     {
         // We check if we have a movement input, if we do we change the position of the character.
         if (change != Vector3.zero)
