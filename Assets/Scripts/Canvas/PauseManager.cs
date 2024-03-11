@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
 {
@@ -11,20 +12,12 @@ public class PauseManager : MonoBehaviour
 
     private PlayerState state;
 
-    // Start is called before the first frame update
-    void Start()
+    public void TogglePause(InputAction.CallbackContext context)
     {
-        isPaused = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Pause and unpause the game
-        if(Input.GetButtonDown("Pause"))
+        if (context.started)
         {
             isPaused = !isPaused;
-            if(isPaused)
+            if (isPaused)
             {
                 point.transform.position = player.gameObject.transform.position;
                 point.SetActive(true);
@@ -42,6 +35,12 @@ public class PauseManager : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        isPaused = false;
     }
 
     //Close the pause menu

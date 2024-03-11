@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum PlayerState
 {
@@ -29,6 +30,45 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public AudioSource crowbarAttackSound;
     public AudioSource healingSound;
 
+    private Vector3 _change;
+    public void HandleMovement(InputAction.CallbackContext context)
+    {
+        var change = context.ReadValue<Vector2>();
+        _change.x = change.x;
+        _change.y = change.y;
+    }
+
+    public void Heal(InputAction.CallbackContext context)
+    {
+        if (context.started && healthManager.CurrentHealth < healthManager.maxHealth && inventory.potions > 0)
+        {
+            inventory.potions--;
+            healingSound.Play();
+            healthManager.RestoreHealth(2);
+        }
+    }
+
+    public void LeftAttack(InputAction.CallbackContext context)
+    {
+        if(context.started  &&
+           currentState != PlayerState.attacking && 
+           currentState != PlayerState.staggered &&
+           inventory.leftWeapon)
+        {
+            LeftAttackSequence();
+        }
+    }
+
+    public void RightAttack(InputAction.CallbackContext context)
+    {
+        if (context.started &&
+           currentState != PlayerState.attacking &&
+           currentState != PlayerState.staggered &&
+           inventory.rightWeapon)
+        {
+            RightAttackSequence();
+        }
+    }
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -54,50 +94,18 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     {
         healthManager.CurrentHealth = saveManager.state.health;
     }
-
-    private void Update()
-    {
-        //Attacking controlls
-        if (Input.GetButtonDown("LeftAttack") && 
-            (currentState != PlayerState.attacking && currentState != PlayerState.staggered) && 
-            inventory.leftWeapon)
-        {
-            LeftAttackSequence();
-        }
-        else if (Input.GetButtonDown("RightAttack") &&
-            (currentState != PlayerState.attacking && currentState != PlayerState.staggered)&& 
-            inventory.rightWeapon)
-        {
-            RightAttackSequence();
-        }
-
-        //Healing Item
-        if(Input.GetKeyDown(KeyCode.E)){
-            if(healthManager.CurrentHealth < healthManager.maxHealth && inventory.potions > 0){
-                inventory.potions--;
-                healingSound.Play();
-                healthManager.RestoreHealth(2);
-                }
-        }
-    }
-
     private void FixedUpdate()
     {
         //Forcefully stops physics pushing
-        var change = Vector3.zero;
         if (currentState != PlayerState.staggered)
         {
             playerRigidbody.velocity = Vector3.zero;
         }
 
-        // If the user uses a movement key, the value will change accordingly based on the axis. It can have 3 values (1,0,-1).
-        change.x = Input.GetAxisRaw("Horizontal");
-        change.y = Input.GetAxisRaw("Vertical");
-
         // Call the function to update the animation.
         if (currentState == PlayerState.idle || currentState == PlayerState.moving)
         {
-            UpdateAnimationAndMove(change);
+            UpdateAnimationAndMove(_change);
         }
     }
 
