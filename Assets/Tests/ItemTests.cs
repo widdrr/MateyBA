@@ -7,7 +7,6 @@ using UnityEngine.TestTools;
 
 public class ItemTests : InputTestFixture
 {
-    private Keyboard _keyboard;
     private Inventory _inventory;
     private SaveManager _saveManager;
 
@@ -16,8 +15,6 @@ public class ItemTests : InputTestFixture
     [OneTimeSetUp]
     public void OneTimeSetup()
     {
-        Debug.Log("setup");
-        _keyboard = InputSystem.AddDevice<Keyboard>();
         _inventory = TestHelpers.LoadScriptableObject<Inventory>("PlayerInventory");
         _saveManager = TestHelpers.LoadScriptableObject<SaveManager>("SaveManager");
     }
@@ -70,7 +67,7 @@ public class ItemTests : InputTestFixture
         var playerHealth = player.GetComponent<HealthManager>();
         var previousHealth = playerHealth.maxHealth;
         var item = TestHelpers.InstantiatePrefab<HealthUpgrade>("BoabaCuBani", new Vector3(2, 2, 0));
-        _inventory.coins = item.GetComponent<Pickup>().Price;
+        _inventory.coins = item.Price;
        
         yield return new WaitForFixedUpdate();    
         yield return new WaitForFixedUpdate();    
@@ -104,5 +101,78 @@ public class ItemTests : InputTestFixture
         
         Assert.IsTrue(item != null);
         Assert.IsTrue(playerHealth.maxHealth == previousHealth);
+    }
+
+    [UnityTest]
+    public IEnumerator Should_Use_Reusable_Item_Multiple_Times()
+    {
+        int numTimes = 3;
+        var player = TestHelpers.GetPlayer();
+        var playerHealth = player.GetComponent<HealthManager>();
+        var item = TestHelpers.InstantiatePrefab<HealthUpgrade>("BoabaReusable", new Vector3(2, 2, 0));
+
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        for (int i = 0; i < numTimes; i++)
+        {
+            var previousHealth = playerHealth.maxHealth;
+            player.transform.position = new Vector3(2, 2, 0);
+
+            yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
+
+            Assert.IsTrue(item != null);
+            Assert.IsTrue(playerHealth.maxHealth > previousHealth);
+
+            player.transform.position = new Vector3(0, 0, 0);
+
+            yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    [UnityTest]
+    public IEnumerator Should_Purchase_Reusable_Item_While_Affording()
+    {
+        int numTimes = 3;
+        var player = TestHelpers.GetPlayer();
+        var playerHealth = player.GetComponent<HealthManager>();
+        var item = TestHelpers.InstantiatePrefab<HealthUpgrade>("BoabaCuBaniReusable", new Vector3(2, 2, 0));
+        int previousHealth;
+        _inventory.coins = item.Price * numTimes;
+
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        for (int i = 0; i < 2; i++)
+        {
+            var previousCoins = _inventory.coins;
+            previousHealth = playerHealth.maxHealth;
+            player.transform.position = new Vector3(2, 2, 0);
+
+            yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
+
+            Assert.IsTrue(item != null);
+            Assert.IsTrue(playerHealth.maxHealth > previousHealth);
+            Assert.IsTrue(_inventory.coins < previousCoins);
+
+            player.transform.position = new Vector3(0, 0, 0);
+
+            yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
+        }
+
+        previousHealth = playerHealth.maxHealth;
+        player.transform.position = new Vector3(2, 2, 0);
+
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        Assert.IsTrue(item != null);
+        Assert.IsTrue(playerHealth.maxHealth == previousHealth);
+        Assert.IsTrue(_inventory.coins < item.Price);
+
     }
 }
