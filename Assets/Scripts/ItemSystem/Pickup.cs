@@ -4,6 +4,8 @@ using UnityEngine.Video;
 
 public abstract class Pickup : MonoBehaviour
 {
+    public int Price { get { return _price; } }
+
     [SerializeField]
     private int _price;
     [SerializeField]
