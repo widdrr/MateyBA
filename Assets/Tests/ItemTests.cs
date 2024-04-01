@@ -145,7 +145,7 @@ public class ItemTests : InputTestFixture
         yield return new WaitForFixedUpdate();
         yield return new WaitForFixedUpdate();
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < numTimes; i++)
         {
             var previousCoins = _inventory.coins;
             previousHealth = playerHealth.maxHealth;
