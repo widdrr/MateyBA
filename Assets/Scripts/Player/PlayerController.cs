@@ -50,12 +50,15 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
     public void LeftAttack(InputAction.CallbackContext context)
     {
+        Debug.Log("TAVAAA");
         if(context.started  &&
            currentState != PlayerState.attacking && 
            currentState != PlayerState.staggered &&
            inventory.leftWeapon)
         {
+            Debug.Log("TAVAAA");
             LeftAttackSequence();
+            Debug.Log("TAVAAA");
         }
     }
 
