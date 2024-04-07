@@ -5,6 +5,4 @@
 ## Team Members:
 * Tava Andrei-Daniel
 * Simion Petrica
-* Rosianu Robert
 * Titiriga Tiberiu-Nicolae
-* Biciusca Matei-Alexandru
