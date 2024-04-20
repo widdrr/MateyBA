@@ -6,3 +6,5 @@
 * Tava Andrei-Daniel
 * Simion Petrica
 * Titiriga Tiberiu-Nicolae
+
+### [Wiki](https://github.com/widdrr/MateyBA/wiki/Automatic-Testing)
