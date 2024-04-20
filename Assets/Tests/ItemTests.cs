@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Xml.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -173,6 +174,27 @@ public class ItemTests : InputTestFixture
         Assert.IsTrue(item != null);
         Assert.IsTrue(playerHealth.maxHealth == previousHealth);
         Assert.IsTrue(_inventory.coins < item.Price);
+
+    }
+
+    [UnityTest]
+    public IEnumerator Non_Player_Sould_Not_Pick_Up_Item()
+    {
+        var item = TestHelpers.InstantiatePrefab<HealthUpgrade>("Boaba", new Vector3(2, 2, 0));
+        var itemCollider = item.GetComponent<Collider2D>();
+        var enemy = TestHelpers.InstantiatePrefab<GenericEnemyController>("Slime", new Vector3(4, 4, 0));
+        var enemyCollider = enemy.GetComponent<Collider2D>();
+
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        enemy.transform.position = new Vector3(2, 2, 0);
+
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        Assert.IsTrue(item != null);
+        Assert.IsTrue(enemyCollider.IsTouching(itemCollider));
 
     }
 }
