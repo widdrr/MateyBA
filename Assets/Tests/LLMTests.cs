@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.TestTools;
 
-public class ChatGPTTests : InputTestFixture
+public class LLMTests : InputTestFixture
 {
     private Inventory _inventory;
     private SaveManager _saveManager;
