@@ -1,0 +1,154 @@
+I want you to write Unit tests for my Unity C# code. 
+ 
+I want you to only reply with an unique code block and nothing else. 
+
+I want your code block to have the implementation of the tests. 
+I will provide a helper class inside <> which you can use. 
+I don’t want explanations. 
+I will provide you with an example of test class inside “”. 
+
+You must know : 
+
+- the player interact automatically on trigger enter; 
+
+- the player already exists at the start of the scene; 
+
+- the testing class must inherit from InputTestFixture; 
+
+- you can’t check if the inventory or savemanager contains a pickup; 
+
+- the price of pickups is read only; 
+
+- the pick ups are not weapons; 
+
+- all pick ups prefabs have Pickup component; 
+
+- the player has a stat named maxHealth which is increased by Healthupgrades; 
+
+- you can’t create new methods for the classes I provide you with. 
+
+- the scene in which you want to execute your testings is named TestingEnvironment; 
+- the player save his pick ups and coins inside a scriptable object of type Inventory; 
+- data, including pickups are saved true an scriptable object of type SaveManager ; 
+
+- you have the pick up prefab called Boaba which increase player's max health and it is free and has class HealthUpgrade; 
+
+- you have the pick up prefab called BoabaCuBani which also increase player’s max health but it cost money and has class HealthUpgrade; 
+- the amount of money the player has can be found in invetory.coins; 
+
+- the amount of money an pick up may cost can be found in item.Price; 
+
+- the free reusable pick up prefab is named BoabaReusable and has class HealthUpgrade; 
+
+- the priced reusable pick up prefab is named BoabaCuBaniReusable and has class HealthUpgrade; 
+
+- you have a NPC prefab named Slime which has the component named SlimeController; 
+
+ 
+I want you to provide me with a test class which is testing: 
+- if the player can pick up a free item; 
+- if the player can purchase items when he afford it; 
+- if the player can’t purchase items when he can’t afford it; 
+-  if the player can use reusable items multiple times; 
+
+-  if the player can purchase reusable item while affording; 
+
+- if NPC can not pick up items. 
+ 
+< using NUnit.Framework; 
+
+using UnityEditor; 
+
+using UnityEngine; 
+
+using System.Collections.Generic; 
+
+using System; 
+
+ 
+
+using Object = UnityEngine.Object; 
+
+ 
+
+public static class TestHelpers 
+
+{ 
+
+    public static GameObject GetPlayer() 
+
+    { 
+
+        return GameObject.FindGameObjectWithTag("Player"); 
+
+    } 
+
+ 
+
+    public static T LoadScriptableObject<T>(string scriptableObjectName) where T : ScriptableObject 
+
+    { 
+
+        return LoadResource<T>(typeof(T).FullName, scriptableObjectName); 
+
+    } 
+
+ 
+
+    public static T InstantiatePrefab<T>(string prefabName, Vector3 position) where T : MonoBehaviour 
+
+    { 
+
+        var prefab = LoadResource<T>("prefab", prefabName); 
+
+        return Object.Instantiate(prefab, position, Quaternion.identity); 
+
+    } 
+
+ 
+
+    private static T LoadResource<T>(string typeName, string resourceName) where T: Object 
+
+    { 
+
+        string[] allGuids = AssetDatabase.FindAssets($"t:{typeName} {resourceName}"); 
+
+        List<string> guids =  new List<string>(); 
+
+        if (allGuids.Length == 0) 
+
+            Assert.Fail($"No {typeName} found named {resourceName}"); 
+
+ 
+
+        foreach (var guid in allGuids) 
+
+        { 
+
+            var path = AssetDatabase.GUIDToAssetPath(guid); 
+
+            var name = path[(path.LastIndexOf('/') + 1)..path.LastIndexOf('.')]; 
+
+            if (name.Equals(resourceName, StringComparison.OrdinalIgnoreCase)) 
+
+                guids.Add(guid); 
+
+        } 
+
+ 
+
+        if (guids.Count > 1) 
+
+            Debug.LogWarning($"More than one {typeName} found named {resourceName}, taking first one"); 
+
+ 
+
+        return (T)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guids[0]), typeof(T)); 
+
+    } 
+
+} 
+
+ 
+
+> 
