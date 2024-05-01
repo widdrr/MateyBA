@@ -80,14 +80,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         // Set default animation
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
-        if (SceneManager.GetActiveScene().name == "TestingEnvironment")
-        {
-            transform.position = Vector3.zero;
-        }
-        else
-        {
-            transform.position = saveManager.state.playerPosition;
-        }
+        transform.position = saveManager.state.playerPosition;
     }
 
     private void Start()
