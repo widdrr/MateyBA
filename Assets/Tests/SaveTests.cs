@@ -42,8 +42,8 @@ public class SaveTests : InputTestFixture
         Vector3 savePosition = new(Random.Range(-6f, 6f), Random.Range(-4f, 4f), 0f);
         var savePoint = TestHelpers.InstantiatePrefab<SavePoint>("SavePoint", savePosition);
         savePosition += new Vector3(0f, 0.5f, 0f);
-        var coins = Mathf.FloorToInt(Random.Range(0, 100));
-        var potions = Mathf.FloorToInt(Random.Range(0, 25));
+        var coins = Mathf.FloorToInt(Random.Range(0, 999));
+        var potions = Mathf.FloorToInt(Random.Range(0, 9));
         _inventory.coins = coins;
         _inventory.potions = potions;
 
@@ -52,10 +52,10 @@ public class SaveTests : InputTestFixture
 
         player.transform.position = savePosition;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
 
         Vector3 storedPosition = _saveManager.state.playerPosition;
-
         Assert.LessOrEqual((storedPosition - savePosition).sqrMagnitude, 0.001f);
         Assert.AreEqual(_saveManager.state.coins, coins);
         Assert.AreEqual(_saveManager.state.potions, potions);
@@ -65,9 +65,9 @@ public class SaveTests : InputTestFixture
         _inventory.potions = 0;
 
         SceneManager.LoadScene("TestingEnvironment");
-        _saveManager.Load();
 
         yield return new WaitForSeconds(0.5f);
+        _saveManager.Load();
 
         player = TestHelpers.GetPlayer();
         Assert.LessOrEqual((player.transform.position - savePosition).sqrMagnitude, 0.001f);
