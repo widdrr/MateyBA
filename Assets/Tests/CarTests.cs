@@ -31,6 +31,7 @@ public class CarTests : InputTestFixture
     public IEnumerator Should_Not_Destroy_Car_Below_Threshold()
     {
         var player = TestHelpers.GetPlayer();
+        player.transform.position = new Vector3(0f, 0f, 0f);
         var car = TestHelpers.InstantiatePrefab<CarExplode>("GreenCarExploding", new Vector3(0, -1, 0));
         var playerController = player.GetComponent<PlayerController>();
 
@@ -61,6 +62,7 @@ public class CarTests : InputTestFixture
     public IEnumerator Should_Destroy_Car_At_Threshold()
     {
         var player = TestHelpers.GetPlayer();
+        player.transform.position = new Vector3(0f, 0f, 0f);
         var car = TestHelpers.InstantiatePrefab<CarExplode>("GreenCarExploding", new Vector3(0, -1, 0));
         var playerController = player.GetComponent<PlayerController>();
 
@@ -91,6 +93,7 @@ public class CarTests : InputTestFixture
     public IEnumerator Should_Destroy_Car_Above_Threshold()
     {
         var player = TestHelpers.GetPlayer();
+        player.transform.position = new Vector3(0f, 0f, 0f);
         var car = TestHelpers.InstantiatePrefab<CarExplode>("GreenCarExploding", new Vector3(0, -1, 0));
         var playerController = player.GetComponent<PlayerController>();
 
